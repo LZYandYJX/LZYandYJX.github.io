@@ -4,6 +4,46 @@
   
   
   <entry>
+    <title>操作系统</title>
+    <link href="/2023/04/19/os-1-3/"/>
+    <url>/2023/04/19/os-1-3/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>haha</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>1-text</title>
+    <link href="/2023/04/19/1-text/"/>
+    <url>/2023/04/19/1-text/</url>
+    
+    <content type="html"><![CDATA[<p>hah</p><h1 id="adadad"><a href="#adadad" class="headerlink" title="adadad"></a>adadad</h1><p>？？？？？？？<br>？？？</p><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-function"><span class="hljs-built_in">int</span> <span class="hljs-title">main</span>()</span>;<br><br></code></pre></td></tr></table></figure><p>图片</p><p><img src="/2023/04/19/1-text/2023-04-19-20-24-57.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>haha</category>
+      
+      <category>hah</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hello World</title>
     <link href="/2023/04/19/hello-world/"/>
     <url>/2023/04/19/hello-world/</url>
