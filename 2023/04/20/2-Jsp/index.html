@@ -1,0 +1,638 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="六只羊">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="JSP语法主要内容一：JSP页面的基本结构二：声明变量和定义方法三：Java程序片四：Java表达式五：JSP中的注释六：JSP指令标记七：JSP动作标记一：JSP页面的基本结构1.1一个JSP页面可由5中元素组合而成：①普通的HTML标记和JavaScript标记②JSP标记，如指令标记、动作标记③变量和方法的声明④Java程序片⑤Java表达式1.2原理①一个JSP页面被第一次请求执行时，To">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第二章JSP语法">
+<meta property="og:url" content="https://lzyjx.github.io.git/2023/04/20/2-Jsp/index.html">
+<meta property="og:site_name" content="崽崽">
+<meta property="og:description" content="JSP语法主要内容一：JSP页面的基本结构二：声明变量和定义方法三：Java程序片四：Java表达式五：JSP中的注释六：JSP指令标记七：JSP动作标记一：JSP页面的基本结构1.1一个JSP页面可由5中元素组合而成：①普通的HTML标记和JavaScript标记②JSP标记，如指令标记、动作标记③变量和方法的声明④Java程序片⑤Java表达式1.2原理①一个JSP页面被第一次请求执行时，To">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-04-20T04:00:32.000Z">
+<meta property="article:modified_time" content="2023-04-20T05:40:36.408Z">
+<meta property="article:author" content="六只羊">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>第二章JSP语法 - 崽崽</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lzyjx.github.io.git","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>崽崽</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="第二章JSP语法"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-20 12:00" pubdate>
+          2023年4月20日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          45 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">第二章JSP语法</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="JSP语法"><a href="#JSP语法" class="headerlink" title="JSP语法"></a><font color = pink size = 8>JSP语法</font></h1><h2 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a><font color = pink size = 7>主要内容</font></h2><h3 id="一：JSP页面的基本结构"><a href="#一：JSP页面的基本结构" class="headerlink" title="一：JSP页面的基本结构"></a><font color = orange size = 6>一：JSP页面的基本结构</h3><h3 id="二：声明变量和定义方法"><a href="#二：声明变量和定义方法" class="headerlink" title="二：声明变量和定义方法"></a>二：声明变量和定义方法</h3><h3 id="三：Java程序片"><a href="#三：Java程序片" class="headerlink" title="三：Java程序片"></a>三：Java程序片</h3><h3 id="四：Java表达式"><a href="#四：Java表达式" class="headerlink" title="四：Java表达式"></a>四：Java表达式</h3><h3 id="五：JSP中的注释"><a href="#五：JSP中的注释" class="headerlink" title="五：JSP中的注释"></a>五：JSP中的注释</h3><h3 id="六：JSP指令标记"><a href="#六：JSP指令标记" class="headerlink" title="六：JSP指令标记"></a>六：JSP指令标记</h3><h3 id="七：JSP动作标记"><a href="#七：JSP动作标记" class="headerlink" title="七：JSP动作标记"></a>七：JSP动作标记</font></h3><h3 id="一：JSP页面的基本结构-1"><a href="#一：JSP页面的基本结构-1" class="headerlink" title="一：JSP页面的基本结构"></a><font color = 3fccca size = 5><strong>一：JSP页面的基本结构</strong></font></h3><p><font color = azure size = 4>1.1一个JSP页面可由5中元素组合而成：</font><br><font size = 3>①普通的HTML标记和JavaScript标记<br>②JSP标记，如指令标记、动作标记<br>③变量和方法的声明<br>④Java程序片<br>⑤Java表达式<br><strong>1.2原理</strong><br>①一个JSP页面被第一次请求执行时，Tomcat服务器首先将JSP页面文件转译成一个Java文件，再将这个Java文件编译生成字节码文件，然后通过执行字节码文件响应用户的请求。<br>②当多个用户请求一个JSP页面时，Tomcat服务器为每个用户启动一个线程，该线程负责执行常驻内存的字节码文件来响应相应用户的请求。这些线程由Tomcat服务器来管理，将CPU的使用权在各个线程之间快速切换，以保证每个线程都有机会执行字节码文件。<br><font color = 3fccca size = 5><strong>二：声明变量和定义方法</strong></font><br><font color = azure size = 4>2.1声明变量 </font><br>①&lt;%! ….%&gt; **(&lt;%! 之间不能有空格)**  <br>在&lt;%!和%&gt;标记符号之间声明变量，定义方法以及定义类。&lt;%!和%&gt;标记符号的内容习惯上放在JSP 页面指令之后，&lt;HTML&gt;之前，也可以写在&lt;HTML&gt;与&lt;&#x2F;HTML&gt;之间。<br>&lt;%!和%&gt;之间声明的变量在<font color=red><strong>整个JSP页面内都有效</strong></font>，与标记符在JSP页面中所在的书写位置无关，但习惯上把&lt;%!、%&gt; 标记符写在JSP页面的前面。<br><font color = azure size = 4>2.2定义方法 </font><br>对于在“&lt;%!”和“%&gt;”标记符号之间定义方法，可以在Java程序片中调用该方法。方法内声明的变量只在该方法内有效，当方法被调用时，方法内声明的变量被分配内存，方法被调用完毕即可释放这些变量所占的内存。可以在“&lt;%!”和“%&gt;”标记符号之间<font color=red><strong>定义类</strong></font>，可以在Java程序片中使用该类创建对象。<br><strong>注意</strong> <br>1.Tomcat服务器将JSP页面转译成Java 文件时，将“&lt;%!”、“%&gt;” 标记符之间声明的变量作为类的成员变量，这些变量占有的内存空间直到Tomcat服务器关闭才释放<br>2.当多个用户请求一个JSP页面时，Tomcat服务器为每个用户启动一个线程，这些线程由Tomcat服务器来管理，这些线程共享JSP页面的成员变量，因此任何一个用户对JSP页面成员变量操作的结果，都会影响到其他用户。<br><font color = 3fccca size = 5><strong>三：Java程序片</strong></font>  <br><font color = azure size = 4>3.1插入程序片</font> <br>可以在&lt;%和%&gt;之间插入Java 程序片。<br><font color = azure size = 4>3.2局部变量 </font> <br>一个JSP页面可以有许多程序片，这些程序片将被Tomcat服务器按顺序执行。在程序片中声明的变量称作JSP页面的局部变量。局部变量的有效范围与其声明的位置有关，即局部变量在JSP页面后继的所有程序片以及表达式部分内都有效。<br><font color = azure size = 4>3.3处理程序片 </font> <br>当多个用户请求一个JSP页面时，Tomcat服务器为每个用户启动一个线程，该线程负责执行字节码文件响应用户的请求。Tomcat服务器使用多线程来处理程序片.<br><font color = azure size = 4>3.4操作JSP页面的成员变量 </font> <br>Java 程序片中操作的成员变量是各个线程（用户）共享的变量，任何一个线程对JSP页面成员变量操作的结果，都会影响到其他线程。<br><font color = azure size = 4>3.5操调用JSP页面的方法 </font> <br>Java 程序片中可以出现方法调用语句，所调用的方法必须是JSP页面曾定义的方法。<br><font color = azure size = 4>3.6操作局部变量 </font> <br>当一个线程享用CPU资源时，Tomcat服务器让该线程执行Java程序片，这时，Java程序片中的局部变量被分配内存空间，当轮到另一个线程享用CPU资源时，Tomcat服务器让该线程再次执行Java程序片，那么，Java程序片中的局部变量会再次分配内存空间。也就是说Java程序片已经被执行了两次，分别运行在不同的线程中，即运行在不同的时间片内。运行在不同线程中的Java程序片的局部变量互不干扰，即一个用户改变Java程序片中的局部变量的值不会影响其他用户的Java程序片中的局部变量。当一个线程将Java程序片执行完毕，运行在该线程中的Java程序片的局部变量释放所占的内存。<br><font color = 3fccca size = 5><strong>四：Java表达式</strong></font>  <br><font color = azure size = 4>4.1表达式</font> <br>可以在&lt;%&#x3D;和%&gt;之间插入一个可求值的表达式（注意：不可插入语句，&lt;%&#x3D;是一个完整的符号，“&lt;%”和“&#x3D;”之间不要有空格）。表达式的值由服务器负责计算，并将计算结果用字符串形式发送到用户端显示。<br>Java表达式可以写在&lt;HTML&gt;之前，也可以写在&lt;HTML&gt;和&lt;&#x2F;HTML&gt;之间或&lt;&#x2F;HTML&gt;之后。<br><font color = azure size = 4> 4.2注意事项</font> <br>在JSP页面中，表达式的值被表示成一个字符串的形式，即Tomcat服务器将表达式的结果转换成字符串，然后发送给用户的浏览器。因此，在编写JSP页面时，要把Java表达式按普通的文本来使用。<br><font color = 3fccca size = 5><strong>五：JSP中的注释</strong></font> <br><font color = azure size = 4>5.1HTML注释</font> <br>&lt;!–    注释内容     –&gt;<br>JSP引擎把HTML注释交给用户，因此用户通过浏览器查看JSP页面的源文件时，能够看到HTML注释。<br><font color = azure size = 4>5.2JSP注释</font> <br>在标记符号“&lt;%–”和“–%&gt;”之间加入注释内容：<br>&lt;%–  注释内容  –%&gt;  <br>Tomcat服务器忽略JSP注释，即在编译JSP页面时忽略JSP注释。<br><font color = 3fccca size = 5><strong>六：JSP指令标记</strong></font> <br><font color = azure size = 4>6.1page指令标记</font> <br>page 指令用来定义整个JSP页面的一些属性和这些属性的值。<br>&lt;%@ page   属性1&#x3D;”属性1的值”  %&gt;<br>&lt;%@ page   属性2&#x3D;”属性2的值”  %&gt;<br>… …<br>&lt;%@ page   属性n&#x3D;”属性n的值”  %&gt;<br>也可以用一个page指令指定多个属性的值，如：<br>&lt;%@ page   属性1&#x3D;”属性1的值”  属性2&#x3D; “属性2的值”  ……%&gt;<br>page 指令标记可以指定属性：contentType、import、language、session、buffer、auotFlush 、isThreadSafe、pageEncoding 、inform的值<br><font color = azure size = 4>6.2contentType属性<br></font> <br>JSP页面设置响应的MIME（Multipurpose Internet Mail Extention）类型，即设置contentType 属性的值。contentType属性值确定JSP页面响应的MIME类型。属性值的一般形式是： “MIME类型”.<br>例如：&lt;%@ page contentType&#x3D;”text&#x2F;html “ %&gt;<br>浏览器启用HTML解析器来解析执行所接收到的信息。 <br>如果希望用户的浏览器启用本地的MS-Word应用程序来解析执行收到的信息，就可以如下设置contentType属性的值：<br>&lt;%@ page contentType&#x3D;”application&#x2F;msword” %&gt;<br><font color = azure size = 4>6.3pageEncoding属性<br></font> <br>只能为pageEncoding指定一个值，不允许两次使用page指令给pageEncoding属性指定不同的或相同的属性值。<br>例如：<br>&lt;%@ page pageEncoding &#x3D; “utf-8” %&gt;<br>那么保存JSP页面应当将“编码”选择为“utf-8”<br><font color = azure size = 4>6.4language属性</font> <br>language属性定义JSP页面使用的脚本语言，该属性的值目前只能取”java”。<br>为language属性指定值的格式是：<br>&lt;%@ page  language&#x3D;”java” %&gt;<br>language属性的默认值是”java”，即如果在JSP页面中没有使用page指令指定该属性的值的，那么，JSP页面默认有如下的page指令：&lt;%@ page  language&#x3D;”java” %&gt;<br><font color = azure size = 4>6.5import 属性</font> <br>该属性的作用是为JSP页面引入Java运行环境提供的包中的类。<br>例如：<br>&lt;%@ page  import&#x3D;”java.io.<em>“, “java.time.LocalDate” %&gt;<br>&lt;%@ page  import&#x3D;”java.util.*” %&gt;<br>&lt;%@ page  import&#x3D;”java.io.*”  %&gt;<br>JSP页面默认import属性已经有如下的值：<br>“ java.lang.</em>“、 “javax.servlet.<em>“、”javax.servlet.jsp.</em>“、”javax.servlet.http.*”。<br><font color = azure size = 4>6.6session属性</font> <br>session 属性用于设置是否需要使用内置的session对象。session的属性值可以是true或false。session属性默认的属性值是true。<br><font color = azure size = 4>6.7buffer属性</font> <br>内置输出流对象out负责将服务器的某些信息或运行结果发送到用户端显示。buffer属性用来指定out设置的缓冲区的大小或不使用缓冲区。例如：<br>&lt;%@ page buffer&#x3D; “24kb” %&gt;<br>buffer属性的默认值是8kb 。<br><font color = azure size = 4>6.8autoFlush属性</font> <br>autoFlush可以取值true或false。autoFlush属性的默认值是true。<br><font color = azure size = 4>6.9isThreadSafe 属性<br></font> <br>isThreadSafe的属性值可取true或false。<br>isThreadSafe属性值为true时，CPU的使用权在各个线程间快速切换.<br>isThreadSafe属性值设置成false时，该JSP页面同一时刻只能响应一个用户的请求，其他用户须排队等待。也就是说，CUP要保证一个线程将JSP页面执行完毕才会把CPU使用权切换给其他线程<br><font color = azure size = 4>6.10info 属性</font> <br>info属性的属性值是一个字符串，其目的是为JSP页面准备一个常用但可能要经常修改的字符串。例如，&lt;%@ page info&#x3D; “we are students” %&gt;可以在JSP页面中使用方法：getServletInfo();<br>获取info属性的属性值。<br><font color = azure size = 4>6.11include 指令标记<br></font> <br>如果需要在JSP页面内某处整体嵌入一个文件，就可以考虑使用include指令标记，其语法格式如下：<br>&lt;%@ include file&#x3D; “文件的URL “ %&gt;<br>■ 嵌入的文件的编码必须和当前JSP页面一致，比如二者都是utf-8编码。<br>■ 所谓静态嵌入，就是当前JSP页面和嵌入的文件合并成一个新的JSP页面，然后Tomcat服务器再将这个新的JSP页面转译成Java文件。因此，嵌入文件后，必须保证新合并成的JSP页面符合JSP语法规则，即能够成为一个JSP页面文件。<br>■include指令可以实现代码的复用。比如，每个JSP页面上都可能都需要一个导航条，以便用户在各个JSP页面之间方便地切换，那么每个JSP页面都可以使用include指令在页面的适当位置整体嵌入一个相同的文件。<br>■允许被嵌入的文件使用page指令指定contentType属性的值，但指定的值要与嵌入该文件的JSP页面中的page指令指定的contentType属性的值相同。\</p>
+<p><font color = 3fccca size = 5><strong>七：JSP动作标记</strong></font> <br><font color = azure size = 4>7.1 include动作标记</font> <br>include 动作标记语法格式为：<br>&lt;jsp:include page&#x3D; “文件的URL” &#x2F;&gt;<br>或<br>&lt;jsp:include page&#x3D; “文件的URL” &gt;<br>   param子标记<br></jsp:include><br>include动作标记告诉JSP页面动态包含一个文件，即JSP页面运行时才将文件加入。与静态嵌入文件的include指令标记不同，当Tomcat服务器根据JSP页面产生成Java文件时，不把JSP页面中动作指令include所包含的文件与原JSP页面合并为一个新的JSP页面，而是告诉Java解释器，这个文件在JSP运行（Java文件的字节码文件被加载执行）时才包含进来。如果包含的文件是普通的文本文件，就将文件的内容发送到用户端，由用户端的浏览器负责显示；如果包含的文件是JSP文件，Tomcat服务器就执行这个文件，然后将执行的结果发送到用户端，并由用户端的浏览器负责显示这些结果。<br><font color = azure size = 4>7.2 param动作标记</font> <br>param标记以“名字—值”对的形式为其他标记提供附加信息。<br>&lt;jsp:param  name&#x3D; “参数”  value&#x3D; “ 参数的值” &#x2F;&gt;<br><font color = azure size = 4>7.3 forward 动作标记</font> <br>&lt;jsp:forward page&#x3D;”要转向的页面” &#x2F;&gt;<br>或<br>&lt;jsp:forward page&#x3D;”要转向的页面” &gt;<br>   param子标记<br></jsp:forward><br>指令的作用是：从该指令处停止当前页面的执行，而转向执行page属性指定的JSP页面。需要注意的是，当前页面使用forward动作标记转向后，尽管用户看到了转向后的页面的效果，但浏览器地址栏中显示的仍然是转向前的JSP页面的URL地址，因此，如果刷新浏览器的显示，将再次执行当前浏览器地址栏中显示的JSP页面。\</p>
+</font>
+
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/JavaWeb/" class="category-chain-item">JavaWeb</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>第二章JSP语法</div>
+      <div>https://lzyjx.github.io.git/2023/04/20/2-Jsp/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>六只羊</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月20日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/19/BinarySearch/" title="二分查找">
+                        <span class="hidden-mobile">二分查找</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
