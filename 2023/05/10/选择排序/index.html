@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://lzyjx.github.io.git/2023/05/10/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/2023-05-10-21-03-05.png">
 <meta property="article:published_time" content="2023-05-10T12:36:56.000Z">
-<meta property="article:modified_time" content="2023-05-10T13:04:11.084Z">
+<meta property="article:modified_time" content="2023-05-10T15:27:45.744Z">
 <meta property="article:author" content="六只羊">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://lzyjx.github.io.git/2023/05/10/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/2023-05-10-21-03-05.png">
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          758 字
+          2.4k 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          7 分钟
+          20 分钟
         
       </span>
     
@@ -283,7 +283,45 @@
 <li>时间效率：从上述伪代码中不难看出，在简单选择排序过程中，元素移动的操作次数很少，不会超过3(n - 1)次，最好的情况是移动0次，此时对应的表已有序；但元素比较的次数与序列的初始状态无关，始终是 n(n - 1) &#x2F; 2 次，因此时间复杂度始终是O(n<sup>2</sup>)。</li>
 <li>稳定性：简单选择排序是一种不稳定的排序方法。</li>
 </ol>
-<h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><h3 id="算法思想-1"><a href="#算法思想-1" class="headerlink" title="算法思想"></a>算法思想</h3><p>堆的定义：<br>若n个关键字序列L[1…n]满足下面某一条性质，则称为堆(Heap)<br>①若满足：L(i) &gt;&#x3D; L(2i) 且L(i) &gt;&#x3D; L(2i + 1) ( 1 &lt;&#x3D; i &lt;&#x3D; n&#x2F;2)—-&gt; 大根堆(大顶堆)。<br>②若满足：L(i) &lt;&#x3D; L(2i) 且L(i) &lt;&#x3D; L(2i + 1) ( 1 &lt;&#x3D; i &lt;&#x3D; n&#x2F;2)—-&gt; 小根堆(小顶堆)。<br><img src="/2023/05/10/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/2023-05-10-21-03-05.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><h3 id="算法思想-1"><a href="#算法思想-1" class="headerlink" title="算法思想"></a>算法思想</h3><ol>
+<li>堆的定义：<br>若n个关键字序列L[1…n]满足下面某一条性质，则称为堆(Heap)<br>①若满足：L(i) &gt;&#x3D; L(2i) 且L(i) &gt;&#x3D; L(2i + 1) ( 1 &lt;&#x3D; i &lt;&#x3D; n&#x2F;2)—-&gt; 大根堆(大顶堆) 根&gt;左&gt;右。<br>②若满足：L(i) &lt;&#x3D; L(2i) 且L(i) &lt;&#x3D; L(2i + 1) ( 1 &lt;&#x3D; i &lt;&#x3D; n&#x2F;2)—-&gt; 小根堆(小顶堆)。<br><img src="/2023/05/10/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/2023-05-10-21-03-05.png" srcset="/img/loading.gif" lazyload></li>
+<li>大根堆的建立<ol>
+<li>思路：把所有非终端结点都检查一遍(从后往前扫描)，是否满足大根堆的要求，如果不满足，则进行调整</li>
+<li>在顺序存储的完全二叉树中，非终端结点编号为i &lt;&#x3D; [n&#x2F;2] 向下取整</li>
+<li>i的左孩子—–&gt; 2i<br>i的右孩子—–&gt; 2i + 1<br>i的父节点—–&gt; [i&#x2F;2] 向下取整</li>
+<li>检查当前结点是否满足 根 &gt;&#x3D; 左、右。若不满足，将当前结点与更大的一个孩子互换。 </li>
+<li>若元素互换破坏了下一级的堆，则应采用相同的方式继续往下调整(小元素不断“下坠”)</li>
+</ol>
+</li>
+<li>堆排序<ol>
+<li>每一趟将堆顶元素加入有序子序列(与待排序序列中的最后一个元素交换)</li>
+<li>并将待排序元素序列再次调整为大根堆(小元素不断“下坠”)</li>
+<li>基于“大根堆”的堆排序得到“递增序列”</li>
+<li>基于“小根堆”的堆排序得到“递减序列”</li>
+</ol>
+</li>
+<li>在堆中插入新元素<ol>
+<li>对于小根堆，新元素放到表尾，与父节点对比，若新元素比父节点更小，则将二者互换。新元素就这样一路“上升”，直到无法继续上升为止。</li>
+</ol>
+</li>
+<li>在堆中删除元素<br>1.被删除的元素用堆底元素替代，然后让该元素不断“下坠”，直到无法下坠为止。</li>
+</ol>
+<h3 id="模板代码-1"><a href="#模板代码-1" class="headerlink" title="模板代码"></a>模板代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//建立大根堆</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">BuildMaxHeap</span><span class="hljs-params">(<span class="hljs-type">int</span> A[],<span class="hljs-type">int</span> len)</span></span>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = len / <span class="hljs-number">2</span>;i &gt; <span class="hljs-number">0</span>;i --)<br>    <span class="hljs-built_in">HeadAdjust</span>(A,i,len);<br>&#125;<br><br><span class="hljs-comment">//将以 k 为根的子树调整为大根堆</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">HeadAdjust</span><span class="hljs-params">(<span class="hljs-type">int</span> A[],<span class="hljs-type">int</span> k,<span class="hljs-type">int</span> len)</span></span>&#123;<br>    A[<span class="hljs-number">0</span>] = A[k];                        <span class="hljs-comment">//A[0]暂存子树的根结点</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">2</span> * k;i &lt;= len;i *= <span class="hljs-number">2</span>)&#123; <span class="hljs-comment">//沿key较大的子结点向下筛选</span><br>        <span class="hljs-keyword">if</span>(i &lt;len &amp;&amp; A[i] &lt; A[i + <span class="hljs-number">1</span>])<br>            i++;                        <span class="hljs-comment">//取key较大的子结点的下表</span><br>        <span class="hljs-keyword">if</span>(A[<span class="hljs-number">0</span>] &gt; A[i]) <span class="hljs-keyword">break</span>;          <span class="hljs-comment">//筛选结束</span><br>        <span class="hljs-keyword">else</span>&#123;<br>            A[k] = A[i];<br>            k = i;                      <span class="hljs-comment">//修改k值，以便继续向下筛选</span><br>        &#125;<br>    &#125;<br>    A[k] = A[<span class="hljs-number">0</span>];                        <span class="hljs-comment">//被筛选结点的值放入最终位置</span><br>&#125;<br><br><span class="hljs-comment">//堆排序的完整逻辑</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">HeapSort</span><span class="hljs-params">(<span class="hljs-type">int</span> A[],<span class="hljs-type">int</span> len)</span></span>&#123;<br>    <span class="hljs-built_in">BuildMaxHeap</span>(A,len);                <span class="hljs-comment">//初始建堆</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = len;i &gt; <span class="hljs-number">1</span>;i --)&#123;        <span class="hljs-comment">//n-1趟的交换和建堆的过程</span><br>        <span class="hljs-built_in">swap</span>(A[i],A[<span class="hljs-number">1</span>]);                <span class="hljs-comment">//堆顶元素和堆底元素交换</span><br>        <span class="hljs-built_in">HeadAdjust</span>(A,<span class="hljs-number">1</span>,i - <span class="hljs-number">1</span>);          <span class="hljs-comment">//把剩余的待排序元素整理成堆</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="性能分析-1"><a href="#性能分析-1" class="headerlink" title="性能分析"></a>性能分析</h3><ol>
+<li>建堆的过程，关键字对比次数不超过4n，建堆时间复杂度 &#x3D; O(n)。</li>
+<li>空间效率：仅使用了常数个辅助单元，所以空间复杂度为O(1).</li>
+<li>时间效率：建堆时间为O(n),之后有n-1次向下调整操作，每次调整的时间复杂度为O(h),故在最好、最坏和平均情况下，堆排序的时间复杂度为O(nlog<sub>2</sub><sup>n</sup>)。</li>
+<li>稳定性：进行筛选时，有可能把后面相同关键字的元素调整到前面，所以堆排序算法是一种不稳定的排序算法。</li>
+</ol>
+<h3 id="题目总结"><a href="#题目总结" class="headerlink" title="题目总结"></a>题目总结</h3><ol>
+<li>简单选择排序算法的比较次数为O(n<sup>2</sup>),移动次数为O(n).</li>
+<li>小根堆关键字最大的记录一定存储在这个堆所对应的完全二叉树的叶结点中；又因为二叉树中的最后一个非叶结点存储在<a href="%E5%90%91%E4%B8%8B%E5%8F%96%E6%95%B4">n&#x2F;2</a>中，所以关键字最大记录的存储范围为[n&#x2F;2] + 1 ~ n。</li>
+<li>向具有n个结点的堆中插入一个新元素的时间复杂度为O(log<sub>2</sub><sup>n</sup>),删除一个元素的时间复杂度为O(log<sub>2</sub><sup>n</sup>)。</li>
+<li>构建n个记录的初始堆，其时间复杂度为O(n);对n个记录进行堆排序，最坏情况下其时间复杂度为O(nlog<sub>2</sub><sup>n</sup>)。</li>
+<li>堆中输出两个最小关键码 ——-&gt; 说明是小根堆</li>
+<li>选择排序算法的比较次数始终为n(n-1)&#x2F;2,与序列初始状态无关</li>
+<li></li>
+</ol>
 
                 
               </div>
