@@ -16,15 +16,15 @@
   <meta name="author" content="六只羊">
   <meta name="keywords" content="">
   
-    <meta name="description" content="归并排序和基数排序归并排序算法思想">
+    <meta name="description" content="归并排序和基数排序归并排序算法思想 “归并”的含义是将两个或两个以上的有序表合并成一个新的有序表。 假定待排序表含有n个记录，则可将其视为n个有序的子表，每个子表的长度为1，然后两两归并，得到[n&#x2F;2] (向上取整)个长度为2或1的有序表；继续两两归并…….如此重复，直到合并成一个长度为n的有序表为止。 Merge()的功能是将前后相邻的两个有序表归并为一个有序表。设两段有序表A[low">
 <meta property="og:type" content="article">
 <meta property="og:title" content="归并排序和基数排序">
 <meta property="og:url" content="https://lzyjx.github.io.git/2023/05/10/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E5%92%8C%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/index.html">
 <meta property="og:site_name" content="崽崽">
-<meta property="og:description" content="归并排序和基数排序归并排序算法思想">
+<meta property="og:description" content="归并排序和基数排序归并排序算法思想 “归并”的含义是将两个或两个以上的有序表合并成一个新的有序表。 假定待排序表含有n个记录，则可将其视为n个有序的子表，每个子表的长度为1，然后两两归并，得到[n&#x2F;2] (向上取整)个长度为2或1的有序表；继续两两归并…….如此重复，直到合并成一个长度为n的有序表为止。 Merge()的功能是将前后相邻的两个有序表归并为一个有序表。设两段有序表A[low">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-10T15:12:18.000Z">
-<meta property="article:modified_time" content="2023-05-10T15:14:52.203Z">
+<meta property="article:modified_time" content="2023-05-11T05:29:03.998Z">
 <meta property="article:author" content="六只羊">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          17 字
+          2.3k 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          1 分钟
+          20 分钟
         
       </span>
     
@@ -273,7 +273,46 @@
             
               <div class="markdown-body">
                 
-                <h1 id="归并排序和基数排序"><a href="#归并排序和基数排序" class="headerlink" title="归并排序和基数排序"></a>归并排序和基数排序</h1><h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3>
+                <h1 id="归并排序和基数排序"><a href="#归并排序和基数排序" class="headerlink" title="归并排序和基数排序"></a>归并排序和基数排序</h1><h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><ol>
+<li>“归并”的含义是将两个或两个以上的有序表合并成一个新的有序表。</li>
+<li>假定待排序表含有n个记录，则可将其视为n个有序的子表，每个子表的长度为1，然后两两归并，得到[n&#x2F;2] (向上取整)个长度为2或1的有序表；继续两两归并…….如此重复，直到合并成一个长度为n的有序表为止。</li>
+<li>Merge()的功能是将前后相邻的两个有序表归并为一个有序表。设两段有序表A[low…mid]、A[mid+1…high]存放在同一顺序表中的相邻位置，先将它们复制到辅助数组B中。每次从对应B中的两个段取出一个记录进行关键字的比较，将较小者放入A中，当数组B中有一段的下标超出其对应的表长（即该段的所有元素都已复制到A中）时，将另一段中的剩余部分直接复制到A中。</li>
+<li>一趟归并排序的操作是，调用[n&#x2F;2h] (向上取整)次算法merge(),将L[1…n]中前后相邻且长度为h的有序段进行两两归并，得到前后相邻、长度为 2h的有序段，整个归并排序需要进行[ log<sub>2</sub><sup>n</sup> ] (向上取整)趟。</li>
+<li>递归形式的2路归并排序算法是基于分治的，其过程如下：<ol>
+<li>分解：将含有n个元素的待排序表分成各含n&#x2F;2个元素的子表，采用2路归并排序算法对两个子表递归地进行排序。</li>
+<li>合并两个已排序的子表得到排序结果。</li>
+</ol>
+</li>
+</ol>
+<h3 id="模板代码"><a href="#模板代码" class="headerlink" title="模板代码"></a>模板代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs cpp">ElemType *B = (ElemType *)<span class="hljs-built_in">malloc</span>((n + <span class="hljs-number">1</span>) * <span class="hljs-built_in">sizeof</span>(ElemType));   <span class="hljs-comment">//辅助数组B</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Merge</span><span class="hljs-params">(ElemType A[],<span class="hljs-type">int</span> low,<span class="hljs-type">int</span> mid,<span class="hljs-type">int</span> high)</span></span>&#123;<br>    <span class="hljs-comment">//表A的两段A[low...mid] 和 A[mid+1...high] 各自有序，将它们合并成一个有序表</span><br>    <span class="hljs-type">int</span> i,j,<span class="hljs-function">k</span><br><span class="hljs-function">    <span class="hljs-title">for</span><span class="hljs-params">(k = low;k &lt;= high;k ++)</span></span><br><span class="hljs-function">        B[k] </span>= A[k];                        <span class="hljs-comment">//将A中所有元素复制到B中</span><br>    <span class="hljs-keyword">for</span>(i = low,j = mid + <span class="hljs-number">1</span>,k = i;i &lt;= mid &amp;&amp; j &lt;= high;k ++)&#123;<br>        <span class="hljs-keyword">if</span>(B[i] &lt;= B[j])                    <span class="hljs-comment">//比较B的左右两段中的元素</span><br>            A[k] = B[i ++];                 <span class="hljs-comment">//将较小值复制到A中</span><br>        <span class="hljs-keyword">else</span> <br>            A[k] = B[j ++];<br>    &#125;<br>    <span class="hljs-keyword">while</span>(i &lt;= mid)     A[k ++] = B[i ++];  <span class="hljs-comment">//若第一个表未检测完，复制</span><br>    <span class="hljs-keyword">while</span>(j &lt;= high)    A[k ++] = B[j ++];  <span class="hljs-comment">//若第二个表未检测完，复制</span><br>&#125;<br><span class="hljs-comment">//上面的代码中，最后两个while循环只有一个会执行。</span><br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">MergeSort</span><span class="hljs-params">(ElemType A[],<span class="hljs-type">int</span> low,<span class="hljs-type">int</span> high)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(low &lt; high)&#123;<br>        <span class="hljs-type">int</span> mid = (low + high / <span class="hljs-number">2</span>);          <span class="hljs-comment">//从中间划分两个子序列</span><br>        <span class="hljs-built_in">MergeSort</span>(A,low,mid);                <span class="hljs-comment">//对左侧子序列进行递归排序</span><br>        <span class="hljs-built_in">MergeSort</span>(A,mid+<span class="hljs-number">1</span>,high);             <span class="hljs-comment">//对右侧子序列进行递归排序</span><br>        <span class="hljs-built_in">Merge</span>(A,low,mid,high);               <span class="hljs-comment">//归并</span><br>    &#125;<span class="hljs-comment">//if</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h3><ol>
+<li>空间效率：Merge()操作中，辅助空间刚好为n个单元，所以算法的空间复杂度为O(n).</li>
+<li>时间效率：每趟归并的时间复杂度为O(n),共需进行[ log<sub>2</sub><sup>n</sup> ] 趟归并，所以算法的时间复杂度为O(nlog<sub>2</sub><sup>n</sup>).</li>
+<li>稳定性：由于Merge()操作不会改变相同关键字记录的相对次序，所以2路归并排序算法是一种稳定的排序方法。</li>
+<li>注意:一般而言，对于N个元素进行k路归并时，排序的趟数m满足 k<sup>m</sup> &#x3D; N ,从而 m &#x3D; log<sub>k</sub><sup>m</sup>,又考虑到m为整数，所以m &#x3D; [ log<sub>k</sub><sup>m</sup> ]。</li>
+</ol>
+<h2 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h2><h3 id="算法思想-1"><a href="#算法思想-1" class="headerlink" title="算法思想"></a>算法思想</h3><ol>
+<li>基数排序是一种很特别的排序方法，它不基于比较和移动进行排序，而基于关键字各位的大小进行排序</li>
+<li>假设长度为n的线性表中每个结点a<sub>j</sub>的关键字由d元组(k<sub>j</sub><sup>d-1</sup>,k<sub>j</sub><sup>d-2</sup>,…,k<sub>j</sub><sup>1</sup>,k<sub>j</sub><sup>0</sup>)组成，满足 0 &lt;&#x3D; k<sub>j</sub><sup>i</sup>&gt; &lt;&#x3D; r-1 (0 &lt;&#x3D; j &lt; n,0 &lt;&#x3D; i &lt;&#x3D; d-1)。其中k<sub>j</sub><sup>d-1</sup>为最主关键字，k<sub>j</sub><sup>0</sup>为最次关键字</li>
+<li>为实现多关键字排序，通常有两种方法：<ol>
+<li>第一种是最高位优先(MSD)法，按关键字位权重递减依次逐层划分成若干更小的子序列，最后将所有子序列依次连接成一个有序序列。</li>
+<li>第二种是最低位优先(LSD)法，按关键字位权重递增依次进行排序，最后形成一个有序序列。</li>
+</ol>
+</li>
+</ol>
+<h3 id="性能分析："><a href="#性能分析：" class="headerlink" title="性能分析："></a>性能分析：</h3><ol>
+<li>空间效率：一趟排序需要的辅助存储空间为r(r个队列：r个队头指针和r个队尾指针)，但以后的排序中会重复使用这些队列，所以基数排序的空间复杂度为O(r).</li>
+<li>时间效率：基数排序需要进行d趟分配和收集，一趟分配需要O(n),一趟收集需要O(r),所以基数排序的时间复杂度为O(d(n+r)),它与序列的初始状态无关。</li>
+<li>稳定性：对于基数排序算法而言，很重要一点就是按位排序时必须是稳定的。因此，这也保证了基数排序的稳定性。</li>
+</ol>
+<h3 id="题目总结"><a href="#题目总结" class="headerlink" title="题目总结"></a>题目总结</h3><ol>
+<li>插入排序和归并排序都不能保证在一趟排序结束后一定有元素放在最终的位置上。</li>
+<li>归并排序算法在平均情况下和最坏情况下的空间复杂度都会达到O(n),快速排序只在最坏情况下才会达到O(n),平均情况下为O(log<sub>2</sub><sup>n</sup>).</li>
+<li>选择排序的比较次数与序列初始状态无关，归并排序的比较次数的数量级也与序列的初始状态无关。</li>
+<li>归并排序代码比选择插入排序更复杂，前者的空间复杂度是O(n),后者是O(1)。但前者的时间复杂度是O(nlog<sub>2</sub><sup>n</sup>),后者是O(n<sup>2</sup>).</li>
+</ol>
+
                 
               </div>
             
@@ -362,6 +401,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/05/11/%E5%90%84%E7%A7%8D%E5%86%85%E9%83%A8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%9A%84%E6%AF%94%E8%BE%83%E5%8F%8A%E5%BA%94%E7%94%A8/" title="各种内部排序算法的比较及应用">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">各种内部排序算法的比较及应用</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
