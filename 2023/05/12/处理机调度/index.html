@@ -60,8 +60,9 @@
 <meta property="og:image" content="https://lzyjx.github.io.git/2023/05/12/%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6/2023-05-13-13-07-10.png">
 <meta property="og:image" content="https://lzyjx.github.io.git/2023/05/12/%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6/2023-05-13-13-14-04.png">
 <meta property="og:image" content="https://lzyjx.github.io.git/2023/05/12/%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6/2023-05-13-13-15-41.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/12/%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6/2023-05-13-16-29-57.png">
 <meta property="article:published_time" content="2023-05-12T02:17:51.000Z">
-<meta property="article:modified_time" content="2023-05-13T05:16:25.963Z">
+<meta property="article:modified_time" content="2023-05-13T10:17:28.617Z">
 <meta property="article:author" content="六只羊">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://lzyjx.github.io.git/2023/05/12/%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6/2023-05-12-19-59-24.png">
@@ -257,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.6k 字
+          4.6k 字
         
       </span>
     
@@ -268,7 +269,7 @@
         
         
         
-          31 分钟
+          39 分钟
         
       </span>
     
@@ -425,6 +426,31 @@
 </ol>
 <h3 id="多级队列调度算法"><a href="#多级队列调度算法" class="headerlink" title="多级队列调度算法"></a>多级队列调度算法</h3><p><img src="/2023/05/12/%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6/2023-05-13-13-14-04.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="各种算法总结"><a href="#各种算法总结" class="headerlink" title="各种算法总结"></a>各种算法总结</h2><p><img src="/2023/05/12/%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6/2023-05-13-13-15-41.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="题目总结"><a href="#题目总结" class="headerlink" title="题目总结"></a>题目总结</h2><ol>
+<li>时间片轮转调度算法是为了多个用户能及时干预系统</li>
+<li>CPU繁忙型作业是指该类作业需要占用很长的CPU时间，而很少请求I&#x2F;O操作，因此CPU繁忙型作业类似于长作业。</li>
+<li>I&#x2F;O繁忙型作业是指作业执行时需频繁请求I&#x2F;O操作，即可能频繁放弃CPU，所以占用CPU的时间不会太长，一旦放弃CPU，则必须重新排队等待调度，故采用短作业优先合适。</li>
+<li>进程(线程)调度的时机有：<ol>
+<li>运行的进程(线程)运行完毕</li>
+<li>运行的进程(线程)所需资源未准备好</li>
+<li>运行的进程(线程)时间片用完</li>
+<li>运行的进程(线程)自我阻塞</li>
+<li>运行的进程(线程)出现错误</li>
+</ol>
+</li>
+<li>时间片轮转算法是按固定的时间配额来运行的，时间一到，不管是否完成，当前进程必须撤下，调度新的进程，因此它是由时间配额决定的、是绝对可抢占的。而优先级算法和短进程优先算法都可分为抢占式和非抢占式。</li>
+<li>作业是用户提交的，进程是系统自动生成的，除此之外，两者的区别是<ol>
+<li>处理：作业通常指一组相互独立的任务或者程序，系统需要根据用户的要求分配资源，将其作为一个整体进行处理；而进程是系统进行资源调度和管理的基本单位，它是程序执行的实例，包括程序、数据和执行状态等元素。</li>
+<li>生命周期：作业在系统中的生命周期包括提交、接受、调度、执行和完成等阶段；而进程的生命周期包括创建、就绪、运行、阻塞和完成等阶段，它有自己的程序计数器、内存空间和执行状态，可以被处理器调度执行。</li>
+<li>独立性：一般情况下，作业是相互独立的，它们可以在不同的时间、不同的系统中进行处理；而进程之间相互依赖，它们需要共享资源、通信等协作操作，形成协同的执行方式。</li>
+<li>资源占用：一个作业需要在执行前获得足够的系统资源，包括内存、CPU、IO等，通常比较耗费系统的资源；而一个进程可以比一个作业更轻量级，它只需获得少量的系统资源即可执行，因为它可以共享许多系统资源（如内存、存储器等）。</li>
+<li>调度：作业调度主要是以作业为单位，对用户提交的作业进行优先级调度和资源分配等处理；而进程调度是以进程为单位，进行时间片轮转、优先级调度等操作，使所有进程能够得到公平的处理。</li>
+<li>作业是以用户任务为单位，进程是以操作系统控制为单位<br><img src="/2023/05/12/%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6/2023-05-13-16-29-57.png" srcset="/img/loading.gif" lazyload></li>
+</ol>
+</li>
+<li>假设系统中所有进程同时到达，则使进程平均周转时间最短的算法是短进程优先调度算法。</li>
+<li>高响应比优先算法在等待时间相同的情况下，作业执行时间越短，响应比越高，满足短任务优先。</li>
+</ol>
 
                 
               </div>
@@ -514,6 +540,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/" title="同步与互斥">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">同步与互斥</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

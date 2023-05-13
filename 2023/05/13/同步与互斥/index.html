@@ -1,0 +1,763 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="六只羊">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="同步与互斥进程同步、进程互斥什么是进程同步 进程具有异步性的特征。异步性是指，各并发执行的进程以各自独立的、不可预知的速度向前推进。 同步亦称直接制约关系，它是指为完成某种任务而建立的两个或多个进程，这些进程因为需要在某些位置上协调它们的工作次序而产生的制约关系。进程间的直接制约关系就是源于它们之间的相互合作。  什么是进程互斥 进程互斥的软件实现方式单标志法 双标志先检查法 双标志后检查法 Pe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="同步与互斥">
+<meta property="og:url" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/index.html">
+<meta property="og:site_name" content="崽崽">
+<meta property="og:description" content="同步与互斥进程同步、进程互斥什么是进程同步 进程具有异步性的特征。异步性是指，各并发执行的进程以各自独立的、不可预知的速度向前推进。 同步亦称直接制约关系，它是指为完成某种任务而建立的两个或多个进程，这些进程因为需要在某些位置上协调它们的工作次序而产生的制约关系。进程间的直接制约关系就是源于它们之间的相互合作。  什么是进程互斥 进程互斥的软件实现方式单标志法 双标志先检查法 双标志后检查法 Pe">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-18-28-45.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-18-30-54.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-18-31-45.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-18-32-27.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-18-38-04.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-18-41-35.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-18-41-58.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-18-42-15.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-18-45-51.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-18-46-01.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-08-11.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-08-34.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-08-51.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-09-02.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-23-40.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-27-03.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-29-34.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-33-16.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-36-42.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-39-03.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-43-37.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-48-11.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-53-39.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-56-58.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-57-10.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-01-02.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-03-49.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-05-26.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-05-37.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-05-47.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-05-56.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-23-58.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-24-07.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-24-27.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-24-40.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-24-50.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-24-58.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-48-30.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-48-43.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-53-26.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-53-34.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-53-44.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-03-58.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-04-07.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-04-16.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-04-24.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-18-21.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-18-31.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-18-41.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-18-52.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-19-02.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-29-15.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-29-30.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-29-51.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-30-05.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-30-13.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-30-29.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-30-38.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-31-09.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-31-17.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-31-30.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-31-52.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-31-59.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-32-09.png">
+<meta property="article:published_time" content="2023-05-13T10:18:25.000Z">
+<meta property="article:modified_time" content="2023-05-13T15:44:59.795Z">
+<meta property="article:author" content="六只羊">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lzyjx.github.io.git/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-18-28-45.png">
+  
+  
+  
+  <title>同步与互斥 - 崽崽</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lzyjx.github.io.git","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>崽崽</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="同步与互斥"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-05-13 18:18" pubdate>
+          2023年5月13日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          13 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">同步与互斥</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="同步与互斥"><a href="#同步与互斥" class="headerlink" title="同步与互斥"></a>同步与互斥</h1><h2 id="进程同步、进程互斥"><a href="#进程同步、进程互斥" class="headerlink" title="进程同步、进程互斥"></a>进程同步、进程互斥</h2><h3 id="什么是进程同步"><a href="#什么是进程同步" class="headerlink" title="什么是进程同步"></a>什么是进程同步</h3><ol>
+<li>进程具有异步性的特征。异步性是指，各并发执行的进程以各自独立的、不可预知的速度向前推进。</li>
+<li>同步亦称直接制约关系，它是指为完成某种任务而建立的两个或多个进程，这些进程因为需要在某些位置上协调它们的工作次序而产生的制约关系。进程间的直接制约关系就是源于它们之间的相互合作。</li>
+</ol>
+<h3 id="什么是进程互斥"><a href="#什么是进程互斥" class="headerlink" title="什么是进程互斥"></a>什么是进程互斥</h3><p><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-18-28-45.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-18-30-54.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-18-31-45.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-18-32-27.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="进程互斥的软件实现方式"><a href="#进程互斥的软件实现方式" class="headerlink" title="进程互斥的软件实现方式"></a>进程互斥的软件实现方式</h2><h3 id="单标志法"><a href="#单标志法" class="headerlink" title="单标志法"></a>单标志法</h3><p><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-18-38-04.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-18-41-35.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="双标志先检查法"><a href="#双标志先检查法" class="headerlink" title="双标志先检查法"></a>双标志先检查法</h3><p><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-18-41-58.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-18-42-15.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="双标志后检查法"><a href="#双标志后检查法" class="headerlink" title="双标志后检查法"></a>双标志后检查法</h3><p><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-18-45-51.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-18-46-01.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="Peterson算法"><a href="#Peterson算法" class="headerlink" title="Peterson算法"></a>Peterson算法</h3><p><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-08-11.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-08-34.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-08-51.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-09-02.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="进程互斥的硬件实现方式"><a href="#进程互斥的硬件实现方式" class="headerlink" title="进程互斥的硬件实现方式"></a>进程互斥的硬件实现方式</h2><h3 id="中断屏蔽方法"><a href="#中断屏蔽方法" class="headerlink" title="中断屏蔽方法"></a>中断屏蔽方法</h3><p><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-23-40.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="TestAndSet指令"><a href="#TestAndSet指令" class="headerlink" title="TestAndSet指令"></a>TestAndSet指令</h3><p><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-27-03.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="Swap指令"><a href="#Swap指令" class="headerlink" title="Swap指令"></a>Swap指令</h3><p><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-29-34.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="互斥锁"><a href="#互斥锁" class="headerlink" title="互斥锁"></a>互斥锁</h2><p><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-33-16.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-36-42.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="信号量机制"><a href="#信号量机制" class="headerlink" title="信号量机制"></a>信号量机制</h2><p><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-39-03.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-43-37.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="信号量机制-—-gt-整型信号量"><a href="#信号量机制-—-gt-整型信号量" class="headerlink" title="信号量机制 —&gt; 整型信号量"></a>信号量机制 —&gt; 整型信号量</h3><p><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-48-11.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="信号量机制-—-gt-记录型信号量"><a href="#信号量机制-—-gt-记录型信号量" class="headerlink" title="信号量机制 —&gt; 记录型信号量"></a>信号量机制 —&gt; 记录型信号量</h3><ol>
+<li>记录型信号量除了需要一个用于代表资源数目的整型变量value外，再增加一个进程链表L，用于链接所有等待该资源的进程。记录型信号量得名于采用了记录型的数据结构</li>
+<li>wait操作，S.value-表示进程请求一个该类资源，当S.value &lt;0时，表示该类资源已分配完毕，因此进程应调用block原语，进行自我阻塞，放弃处理机，并插入该类资源的等待队列S.L,可见该机制遵循了 “让权等待”的准则。</li>
+<li>signal操作，表示进程释放一个资源,使系统中可供分配的该类资源数增1,因此有S.value ++。若加1后仍是S.valueWO,则表示在S.L中仍有等待该资源的进程被阻塞，因此还应调用wakeup原语，将S.L中的第一个等待进程唤醒。<br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-53-39.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-56-58.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-19-57-10.png" srcset="/img/loading.gif" lazyload></li>
+</ol>
+<h2 id="用信号量机制实现进程互斥、同步、前驱关系"><a href="#用信号量机制实现进程互斥、同步、前驱关系" class="headerlink" title="用信号量机制实现进程互斥、同步、前驱关系"></a>用信号量机制实现进程互斥、同步、前驱关系</h2><p><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-01-02.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="信号量机制实现进程互斥"><a href="#信号量机制实现进程互斥" class="headerlink" title="信号量机制实现进程互斥"></a>信号量机制实现进程互斥</h3><p><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-03-49.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="信号量机制实现进程同步"><a href="#信号量机制实现进程同步" class="headerlink" title="信号量机制实现进程同步"></a>信号量机制实现进程同步</h3><p><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-05-26.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-05-37.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="信号量机制实现前驱关系"><a href="#信号量机制实现前驱关系" class="headerlink" title="信号量机制实现前驱关系"></a>信号量机制实现前驱关系</h3><p><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-05-47.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-05-56.png" srcset="/img/loading.gif" lazyload> </p>
+<h2 id="生产者消费者问题"><a href="#生产者消费者问题" class="headerlink" title="生产者消费者问题"></a>生产者消费者问题</h2><p><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-23-58.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-24-07.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-24-27.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-24-40.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-24-50.png" srcset="/img/loading.gif" lazyload></p>
+<ol>
+<li>实现互斥的P操作一定要在实现同步的P操作之后</li>
+<li>V操作不会导致进程阻塞，因此两个V操作顺序可以交换<br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-24-58.png" srcset="/img/loading.gif" lazyload></li>
+</ol>
+<h2 id="多生产者–多消费者"><a href="#多生产者–多消费者" class="headerlink" title="多生产者–多消费者"></a>多生产者–多消费者</h2><p><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-48-30.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-48-43.png" srcset="/img/loading.gif" lazyload></p>
+<ol>
+<li>问题 –&gt; 可不可以不用互斥信号量</li>
+<li>结论 –&gt; 即使不设置专门的互斥变量mutex，也不会出现多个进程同时访问盘子的现象。</li>
+<li>原因 –&gt; 本题种的缓冲区大小为1，在任何时刻，apple、orange、plate三个同步信号量中最多只有一个是1。因此任何时刻，最多只有一个进程的P操作不会被阻塞，并顺利地进入临界区。</li>
+<li>如果盘子的个数为2<br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-53-26.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-53-34.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-20-53-44.png" srcset="/img/loading.gif" lazyload></li>
+</ol>
+<h2 id="吸烟者问题"><a href="#吸烟者问题" class="headerlink" title="吸烟者问题"></a>吸烟者问题</h2><p><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-03-58.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-04-07.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-04-16.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-04-24.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="读者–写者问题"><a href="#读者–写者问题" class="headerlink" title="读者–写者问题"></a>读者–写者问题</h2><p><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-18-21.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-18-31.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-18-41.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-18-52.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-19-02.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="哲学家进餐问题"><a href="#哲学家进餐问题" class="headerlink" title="哲学家进餐问题"></a>哲学家进餐问题</h2><p><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-29-15.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-29-30.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-29-51.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-30-05.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-30-13.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-30-29.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-30-38.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="管程"><a href="#管程" class="headerlink" title="管程"></a>管程</h2><p><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-31-09.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-31-17.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-31-30.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-31-52.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-31-59.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/2023-05-13-21-32-09.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="题目总结"><a href="#题目总结" class="headerlink" title="题目总结"></a>题目总结</h2><ol>
+<li>多个进程可以共享系统中的资源，一次仅允许一个进程使用的资源称为临界资源。访问临界资源的那段代码称为临界区。</li>
+<li>所谓临界区，并不是指临界资源，如共享的数据、代码或硬件设备等，而是指访问临界资源的那段代码程序，如P&#x2F;V操作、加减锁等。</li>
+<li>临界资源是互斥共享资源，非共享数据不属于临界资源。打印机、共享变量和共享缓冲区都只允许一次供一个进程使用。</li>
+<li>P、V操作是一种低级的进程通信原语，它是不能被中断的</li>
+<li>管程定义了一个数据结构和能为并发进程所执行(在该数据结构上)的一组操作，这组操作能同步进程并改变管程中的数据。</li>
+<li>共享程序段可能同时被多个进程使用，所以必须可重入编码，否则无法实现共享的功能</li>
+<li>管程由局限于管程的共享变量说明、对管程内的数据结构进行操作的一组过程及对局限于管程的数据设置初始值的语句组成。</li>
+<li>管程的signal操作与信号量机制中的V操作不同，信号量机制中的V操作一定会改变信号量的值S&#x3D;S+1。而管程中的signal操作是针对某个条件变量的，若不存在该条件而阻塞的进程，则signal不会产生任何影响。</li>
+<li>PV操作是一种低级的进程通信原语，不是系统调用。</li>
+<li>管程具有如下特性：①局部于管程的数据只能被局部于管程内的过程所访问。②一个进程只有通过调用管程内的过程才能进入管程访问共享数据。③每次仅允许一个进程在管程内执行某个内部过程。</li>
+<li>信号量方法可以实现让权等待。</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E7%AB%A0/" class="category-chain-item">第二章</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>同步与互斥</div>
+      <div>https://lzyjx.github.io.git/2023/05/13/同步与互斥/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>六只羊</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年5月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/05/13/%E6%AD%BB%E9%94%81/" title="死锁">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">死锁</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/05/12/%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6/" title="处理机调度">
+                        <span class="hidden-mobile">处理机调度</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
