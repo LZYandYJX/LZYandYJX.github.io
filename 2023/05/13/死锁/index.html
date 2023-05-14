@@ -16,15 +16,38 @@
   <meta name="author" content="六只羊">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="死锁死锁的概念死锁、饥饿、死循环的区别 死锁产生的必要条件 什么时候会发生死锁 死锁处理的策略 死锁的处理策略–预防死锁破坏互斥条件 破坏不剥夺条件 破坏请求和保持条件 破坏循环等待条件 死锁的处理策略–避免死锁(银行家算法)安全序列、不安全序列、死锁的联系 所谓安全序列，就是指如果系统按照这种序列分配资源，则每个进程都能顺利完成。只要能找出一个安全序列，系统就是安全状态。当然，安全状态可以有多个">
+<meta property="og:type" content="article">
 <meta property="og:title" content="死锁">
 <meta property="og:url" content="https://lzyjx.github.io.git/2023/05/13/%E6%AD%BB%E9%94%81/index.html">
 <meta property="og:site_name" content="崽崽">
+<meta property="og:description" content="死锁死锁的概念死锁、饥饿、死循环的区别 死锁产生的必要条件 什么时候会发生死锁 死锁处理的策略 死锁的处理策略–预防死锁破坏互斥条件 破坏不剥夺条件 破坏请求和保持条件 破坏循环等待条件 死锁的处理策略–避免死锁(银行家算法)安全序列、不安全序列、死锁的联系 所谓安全序列，就是指如果系统按照这种序列分配资源，则每个进程都能顺利完成。只要能找出一个安全序列，系统就是安全状态。当然，安全状态可以有多个">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-10-46-29.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-10-46-53.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-10-47-19.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-10-47-41.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-10-47-51.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-10-58-15.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-10-58-44.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-10-59-08.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-10-59-30.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-10-59-41.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-11-14-43.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-11-14-53.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-11-15-03.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-11-15-41.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-11-21-29.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-11-21-48.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-11-21-57.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-11-22-06.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-11-22-32.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-11-22-45.png">
 <meta property="article:published_time" content="2023-05-13T13:58:46.000Z">
-<meta property="article:modified_time" content="2023-05-13T13:58:47.001Z">
+<meta property="article:modified_time" content="2023-05-14T04:57:38.891Z">
 <meta property="article:author" content="六只羊">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lzyjx.github.io.git/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-10-46-29.png">
   
   
   
@@ -217,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          951 字
         
       </span>
     
@@ -228,7 +251,7 @@
         
         
         
-          1 分钟
+          8 分钟
         
       </span>
     
@@ -271,13 +294,75 @@
             
               <div class="markdown-body">
                 
-                
+                <h1 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h1><h2 id="死锁的概念"><a href="#死锁的概念" class="headerlink" title="死锁的概念"></a>死锁的概念</h2><h3 id="死锁、饥饿、死循环的区别"><a href="#死锁、饥饿、死循环的区别" class="headerlink" title="死锁、饥饿、死循环的区别"></a>死锁、饥饿、死循环的区别</h3><p><img src="/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-10-46-29.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="死锁产生的必要条件"><a href="#死锁产生的必要条件" class="headerlink" title="死锁产生的必要条件"></a>死锁产生的必要条件</h3><p><img src="/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-10-46-53.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="什么时候会发生死锁"><a href="#什么时候会发生死锁" class="headerlink" title="什么时候会发生死锁"></a>什么时候会发生死锁</h3><p><img src="/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-10-47-19.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="死锁处理的策略"><a href="#死锁处理的策略" class="headerlink" title="死锁处理的策略"></a>死锁处理的策略</h3><p><img src="/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-10-47-41.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-10-47-51.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="死锁的处理策略–预防死锁"><a href="#死锁的处理策略–预防死锁" class="headerlink" title="死锁的处理策略–预防死锁"></a>死锁的处理策略–预防死锁</h2><h3 id="破坏互斥条件"><a href="#破坏互斥条件" class="headerlink" title="破坏互斥条件"></a>破坏互斥条件</h3><p><img src="/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-10-58-15.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="破坏不剥夺条件"><a href="#破坏不剥夺条件" class="headerlink" title="破坏不剥夺条件"></a>破坏不剥夺条件</h3><p><img src="/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-10-58-44.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="破坏请求和保持条件"><a href="#破坏请求和保持条件" class="headerlink" title="破坏请求和保持条件"></a>破坏请求和保持条件</h3><p><img src="/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-10-59-08.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="破坏循环等待条件"><a href="#破坏循环等待条件" class="headerlink" title="破坏循环等待条件"></a>破坏循环等待条件</h3><p><img src="/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-10-59-30.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-10-59-41.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="死锁的处理策略–避免死锁-银行家算法"><a href="#死锁的处理策略–避免死锁-银行家算法" class="headerlink" title="死锁的处理策略–避免死锁(银行家算法)"></a>死锁的处理策略–避免死锁(银行家算法)</h2><h3 id="安全序列、不安全序列、死锁的联系"><a href="#安全序列、不安全序列、死锁的联系" class="headerlink" title="安全序列、不安全序列、死锁的联系"></a>安全序列、不安全序列、死锁的联系</h3><ol>
+<li>所谓安全序列，就是指如果系统按照这种序列分配资源，则每个进程都能顺利完成。只要能找出一个安全序列，系统就是安全状态。当然，安全状态可以有多个。</li>
+<li>如果分配了资源之后，系统中找不出任何一个安全序列，系统就进入了不安全状态。这就意味着之后可能所有进程都无法顺利的执行下去。当然，如果有进程提前归还了一些资源，那系统也有可能重新回到安全状态，不过我们在分配资源之前总是要考虑到最坏的情况。</li>
+<li>如果系统处于安全状态，就一定不会发生死锁。如果系统进入不安全状态，就可能发生死锁(处于不安全状态未必就是发生了死锁，但发生死锁时一定是在不安全状态)。</li>
+<li>因此可以在资源分配之前预先判断这次分配是否会导致系统进入不安全状态，以此决定是否答应资源分配请求。这也是“银行家算法”的核心思想。</li>
+</ol>
+<h3 id="银行家算法"><a href="#银行家算法" class="headerlink" title="银行家算法"></a>银行家算法</h3><p><img src="/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-11-14-43.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-11-14-53.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-11-15-03.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-11-15-41.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="死锁的检测和解除"><a href="#死锁的检测和解除" class="headerlink" title="死锁的检测和解除"></a>死锁的检测和解除</h2><h3 id="死锁的检测"><a href="#死锁的检测" class="headerlink" title="死锁的检测"></a>死锁的检测</h3><p><img src="/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-11-21-29.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-11-21-48.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-11-21-57.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-11-22-06.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="死锁的解除"><a href="#死锁的解除" class="headerlink" title="死锁的解除"></a>死锁的解除</h3><p><img src="/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-11-22-32.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/13/%E6%AD%BB%E9%94%81/2023-05-14-11-22-45.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="题目总结"><a href="#题目总结" class="headerlink" title="题目总结"></a>题目总结</h2><ol>
+<li>死锁避免是指在资源动态分配过程中用某些算法加以限制，防止系统进入不安全状态从而避免死锁的发生。</li>
+<li>资源有序分配策略可以限制循环等待条件的发生。</li>
+<li>解除死锁的方法有：<ol>
+<li>剥夺资源法：挂起某些死锁进程，并抢占它的资源，将这些资源分配给其他的死锁进程。</li>
+<li>撤销进程法：强制撤销部分甚至全部死锁进程并剥夺这些进程的资源</li>
+</ol>
+</li>
+<li>资源有序分配算法为死锁预防策略。</li>
+<li>多道程序技术要求进程间能实现并发，需要实现进程调度以保证CPU的工作效率，而并发性的实现需要中断功能的支持。</li>
+<li>进程指向资源的有向边称为申请边，资源指向进程的有向边称为分配边。矩形框表示资源，其中的圆点表示资源的数目。圆圈结点表示进程。</li>
+<li>死锁的四个必要条件中，无法破坏的是资源互斥，也就是说，在任何时候，每个资源只能被一个进程占用。由于资源的本质是稀缺的，资源只能供一个进程独占，因此互斥是无法破坏的。</li>
+<li>死锁定理是用于检测死锁的方法。</li>
+<li>银行家算法是避免死锁的算法，用于计算动态资源分配的安全性以避免系统进入死锁状态，不能用于判断系统是否处于死锁。</li>
+<li>在死锁的检测和解除中，系统为进程分配资源时不采取任何措施，但提供死锁的检测和解除手段。</li>
+<li></li>
+</ol>
+
                 
               </div>
             
             <hr/>
             <div>
               <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E7%AB%A0/" class="category-chain-item">第二章</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
   
   
 </div>
