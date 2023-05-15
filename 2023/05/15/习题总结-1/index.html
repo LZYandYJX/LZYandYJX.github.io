@@ -16,26 +16,21 @@
   <meta name="author" content="六只羊">
   <meta name="keywords" content="">
   
-    <meta name="description" content="内存映射文件传统的文件访问方式 内存映射文件  总结">
+    <meta name="description" content="习题总结 对于顺序执行程序，缺页中断的次数等于其访问的页帧数。由于页面尺寸增大，存放程序需要的页帧数就会减少，因此缺页中断的次数也会减少。 多次性、对换性和离散型是虚拟内存的特征，一次性是则是传统存储体系的特征。 虚拟存储技术基于程序的局部性原理。局部性越好，虚拟存储系统越能更好地发挥作用。 请求分页存储管理方式和基本分页存储管理方式的区别是，前者采用虚拟技术，因此开始运行时，不必将作业全部一次性">
 <meta property="og:type" content="article">
-<meta property="og:title" content="内存映射文件">
-<meta property="og:url" content="https://lzyjx.github.io.git/2023/05/15/%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6/index.html">
+<meta property="og:title" content="习题总结">
+<meta property="og:url" content="https://lzyjx.github.io.git/2023/05/15/%E4%B9%A0%E9%A2%98%E6%80%BB%E7%BB%93-1/index.html">
 <meta property="og:site_name" content="崽崽">
-<meta property="og:description" content="内存映射文件传统的文件访问方式 内存映射文件  总结">
+<meta property="og:description" content="习题总结 对于顺序执行程序，缺页中断的次数等于其访问的页帧数。由于页面尺寸增大，存放程序需要的页帧数就会减少，因此缺页中断的次数也会减少。 多次性、对换性和离散型是虚拟内存的特征，一次性是则是传统存储体系的特征。 虚拟存储技术基于程序的局部性原理。局部性越好，虚拟存储系统越能更好地发挥作用。 请求分页存储管理方式和基本分页存储管理方式的区别是，前者采用虚拟技术，因此开始运行时，不必将作业全部一次性">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/15/%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6/2023-05-15-20-46-42.png">
-<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/15/%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6/2023-05-15-20-47-12.png">
-<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/15/%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6/2023-05-15-20-47-28.png">
-<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/15/%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6/2023-05-15-20-47-48.png">
-<meta property="article:published_time" content="2023-05-15T12:45:22.000Z">
-<meta property="article:modified_time" content="2023-05-15T12:52:21.396Z">
+<meta property="article:published_time" content="2023-05-15T14:40:48.000Z">
+<meta property="article:modified_time" content="2023-05-15T15:53:58.514Z">
 <meta property="article:author" content="六只羊">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://lzyjx.github.io.git/2023/05/15/%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6/2023-05-15-20-46-42.png">
   
   
   
-  <title>内存映射文件 - 崽崽</title>
+  <title>习题总结 - 崽崽</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="内存映射文件"></span>
+            <span id="subtitle" data-typed-text="习题总结"></span>
           
         </div>
 
@@ -212,7 +207,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-05-15 20:45" pubdate>
+        <time datetime="2023-05-15 22:40" pubdate>
           2023年5月15日 晚上
         </time>
       </span>
@@ -224,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          23 字
+          421 字
         
       </span>
     
@@ -235,7 +230,7 @@
         
         
         
-          1 分钟
+          4 分钟
         
       </span>
     
@@ -273,14 +268,21 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">内存映射文件</h1>
+            <h1 style="display: none">习题总结</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="内存映射文件"><a href="#内存映射文件" class="headerlink" title="内存映射文件"></a>内存映射文件</h1><h2 id="传统的文件访问方式"><a href="#传统的文件访问方式" class="headerlink" title="传统的文件访问方式"></a>传统的文件访问方式</h2><p><img src="/2023/05/15/%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6/2023-05-15-20-46-42.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="内存映射文件-1"><a href="#内存映射文件-1" class="headerlink" title="内存映射文件"></a>内存映射文件</h2><p> <img src="/2023/05/15/%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6/2023-05-15-20-47-12.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/15/%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6/2023-05-15-20-47-28.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/2023/05/15/%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6/2023-05-15-20-47-48.png" srcset="/img/loading.gif" lazyload></p>
+                <h1 id="习题总结"><a href="#习题总结" class="headerlink" title="习题总结"></a>习题总结</h1><ol>
+<li>对于顺序执行程序，缺页中断的次数等于其访问的页帧数。由于页面尺寸增大，存放程序需要的页帧数就会减少，因此缺页中断的次数也会减少。</li>
+<li>多次性、对换性和离散型是虚拟内存的特征，一次性是则是传统存储体系的特征。</li>
+<li>虚拟存储技术基于程序的局部性原理。局部性越好，虚拟存储系统越能更好地发挥作用。</li>
+<li>请求分页存储管理方式和基本分页存储管理方式的区别是，前者采用虚拟技术，因此开始运行时，不必将作业全部一次性装入内存，而后者不是。</li>
+<li>Belady异常（Bélády’s anomaly）是一种现象，在分页式虚拟存储器管理中，发生缺页时的置换算法采用FIFO（先进先出）算法时，如果对一个进程未分配它所要求的全部页面，有时就会出现分配的页面数增多但缺页率反而提高的异常现象。因此，Belady异常通常在使用FIFO页面替换算法时发生。</li>
+<li>导致LRU算法实现起来耗费高的原因是需要对所有的页进行排序。</li>
+<li>页表项中的合法位信息显示本页面是否在内存中，即决定了是否会发生页面故障。</li>
+<li></li>
+</ol>
 
                 
               </div>
@@ -333,8 +335,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>内存映射文件</div>
-      <div>https://lzyjx.github.io.git/2023/05/15/内存映射文件/</div>
+      <div>习题总结</div>
+      <div>https://lzyjx.github.io.git/2023/05/15/习题总结-1/</div>
     </div>
     <div class="license-meta">
       
@@ -378,18 +380,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/05/15/%E4%B9%A0%E9%A2%98%E6%80%BB%E7%BB%93-1/" title="习题总结">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">习题总结</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/05/15/%E9%A1%B5%E9%9D%A2%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5/" title="页面分配策略">
-                        <span class="hidden-mobile">页面分配策略</span>
+                      <a href="/2023/05/15/%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6/" title="内存映射文件">
+                        <span class="hidden-mobile">内存映射文件</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
