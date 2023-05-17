@@ -4,6 +4,180 @@
   
   
   <entry>
+    <title>固态硬盘</title>
+    <link href="/2023/05/17/%E5%9B%BA%E6%80%81%E7%A1%AC%E7%9B%98/"/>
+    <url>/2023/05/17/%E5%9B%BA%E6%80%81%E7%A1%AC%E7%9B%98/</url>
+    
+    <content type="html"><![CDATA[<h1 id="固态硬盘"><a href="#固态硬盘" class="headerlink" title="固态硬盘"></a>固态硬盘</h1><p><img src="/2023/05/17/%E5%9B%BA%E6%80%81%E7%A1%AC%E7%9B%98/2023-05-17-11-43-52.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>操作系统</category>
+      
+      <category>第五章</category>
+      
+      <category>磁盘和固态硬盘</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>磁盘的管理</title>
+    <link href="/2023/05/17/%E7%A3%81%E7%9B%98%E7%9A%84%E7%AE%A1%E7%90%86/"/>
+    <url>/2023/05/17/%E7%A3%81%E7%9B%98%E7%9A%84%E7%AE%A1%E7%90%86/</url>
+    
+    <content type="html"><![CDATA[<h1 id="磁盘的管理"><a href="#磁盘的管理" class="headerlink" title="磁盘的管理"></a>磁盘的管理</h1><h2 id="磁盘初始化"><a href="#磁盘初始化" class="headerlink" title="磁盘初始化"></a>磁盘初始化</h2><p><img src="/2023/05/17/%E7%A3%81%E7%9B%98%E7%9A%84%E7%AE%A1%E7%90%86/2023-05-17-11-30-53.png"></p><h2 id="引导块"><a href="#引导块" class="headerlink" title="引导块"></a>引导块</h2><p><img src="/2023/05/17/%E7%A3%81%E7%9B%98%E7%9A%84%E7%AE%A1%E7%90%86/2023-05-17-11-31-10.png"><br><img src="/2023/05/17/%E7%A3%81%E7%9B%98%E7%9A%84%E7%AE%A1%E7%90%86/2023-05-17-11-31-30.png"></p><h2 id="坏块的管理"><a href="#坏块的管理" class="headerlink" title="坏块的管理"></a>坏块的管理</h2><p><img src="/2023/05/17/%E7%A3%81%E7%9B%98%E7%9A%84%E7%AE%A1%E7%90%86/2023-05-17-11-31-46.png"></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/2023/05/17/%E7%A3%81%E7%9B%98%E7%9A%84%E7%AE%A1%E7%90%86/2023-05-17-11-32-01.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>操作系统</category>
+      
+      <category>第五章</category>
+      
+      <category>磁盘和固态硬盘</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>减少延迟时间的方法</title>
+    <link href="/2023/05/17/%E5%87%8F%E5%B0%91%E5%BB%B6%E8%BF%9F%E6%97%B6%E9%97%B4%E7%9A%84%E6%96%B9%E6%B3%95/"/>
+    <url>/2023/05/17/%E5%87%8F%E5%B0%91%E5%BB%B6%E8%BF%9F%E6%97%B6%E9%97%B4%E7%9A%84%E6%96%B9%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<h1 id="减少延迟时间的方法"><a href="#减少延迟时间的方法" class="headerlink" title="减少延迟时间的方法+"></a>减少延迟时间的方法+</h1><p><img src="/2023/05/17/%E5%87%8F%E5%B0%91%E5%BB%B6%E8%BF%9F%E6%97%B6%E9%97%B4%E7%9A%84%E6%96%B9%E6%B3%95/2023-05-17-11-19-55.png"></p><h2 id="减少延迟时间的方法：交替编号"><a href="#减少延迟时间的方法：交替编号" class="headerlink" title="减少延迟时间的方法：交替编号"></a>减少延迟时间的方法：交替编号</h2><p><img src="/2023/05/17/%E5%87%8F%E5%B0%91%E5%BB%B6%E8%BF%9F%E6%97%B6%E9%97%B4%E7%9A%84%E6%96%B9%E6%B3%95/2023-05-17-11-20-14.png"></p><h2 id="磁盘地址结构的设计"><a href="#磁盘地址结构的设计" class="headerlink" title="磁盘地址结构的设计"></a>磁盘地址结构的设计</h2><p><img src="/2023/05/17/%E5%87%8F%E5%B0%91%E5%BB%B6%E8%BF%9F%E6%97%B6%E9%97%B4%E7%9A%84%E6%96%B9%E6%B3%95/2023-05-17-11-20-28.png"><br><img src="/2023/05/17/%E5%87%8F%E5%B0%91%E5%BB%B6%E8%BF%9F%E6%97%B6%E9%97%B4%E7%9A%84%E6%96%B9%E6%B3%95/2023-05-17-11-20-50.png"><br><img src="/2023/05/17/%E5%87%8F%E5%B0%91%E5%BB%B6%E8%BF%9F%E6%97%B6%E9%97%B4%E7%9A%84%E6%96%B9%E6%B3%95/2023-05-17-11-20-56.png"></p><h2 id="减少延迟时间的方法：错位命名"><a href="#减少延迟时间的方法：错位命名" class="headerlink" title="减少延迟时间的方法：错位命名"></a>减少延迟时间的方法：错位命名</h2><p><img src="/2023/05/17/%E5%87%8F%E5%B0%91%E5%BB%B6%E8%BF%9F%E6%97%B6%E9%97%B4%E7%9A%84%E6%96%B9%E6%B3%95/2023-05-17-11-22-06.png"><br><img src="/2023/05/17/%E5%87%8F%E5%B0%91%E5%BB%B6%E8%BF%9F%E6%97%B6%E9%97%B4%E7%9A%84%E6%96%B9%E6%B3%95/2023-05-17-11-22-20.png"></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/2023/05/17/%E5%87%8F%E5%B0%91%E5%BB%B6%E8%BF%9F%E6%97%B6%E9%97%B4%E7%9A%84%E6%96%B9%E6%B3%95/2023-05-17-11-22-31.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>操作系统</category>
+      
+      <category>第五章</category>
+      
+      <category>磁盘和固态硬盘</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>磁盘调度算法</title>
+    <link href="/2023/05/17/%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/"/>
+    <url>/2023/05/17/%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<h1 id="磁盘调度算法"><a href="#磁盘调度算法" class="headerlink" title="磁盘调度算法"></a>磁盘调度算法</h1><h2 id="一次磁盘读-x2F-写操作需要的时间"><a href="#一次磁盘读-x2F-写操作需要的时间" class="headerlink" title="一次磁盘读&#x2F;写操作需要的时间"></a>一次磁盘读&#x2F;写操作需要的时间</h2><p><img src="/2023/05/17/%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/2023-05-17-11-03-58.png"></p><h2 id="先来先服务算法（FCFS）"><a href="#先来先服务算法（FCFS）" class="headerlink" title="先来先服务算法（FCFS）"></a>先来先服务算法（FCFS）</h2><p><img src="/2023/05/17/%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/2023-05-17-11-04-12.png"></p><h2 id="最短寻找时间优先（SSTF）"><a href="#最短寻找时间优先（SSTF）" class="headerlink" title="最短寻找时间优先（SSTF）"></a>最短寻找时间优先（SSTF）</h2><p><img src="/2023/05/17/%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/2023-05-17-11-04-38.png"></p><h2 id="扫描算法（SCAN）"><a href="#扫描算法（SCAN）" class="headerlink" title="扫描算法（SCAN）"></a>扫描算法（SCAN）</h2><p><img src="/2023/05/17/%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/2023-05-17-11-04-51.png"></p><h2 id="LOOK调度算法"><a href="#LOOK调度算法" class="headerlink" title="LOOK调度算法"></a>LOOK调度算法</h2><p><img src="/2023/05/17/%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/2023-05-17-11-05-15.png"></p><h2 id="循环扫描算法（C-SCAN）"><a href="#循环扫描算法（C-SCAN）" class="headerlink" title="循环扫描算法（C-SCAN）"></a>循环扫描算法（C-SCAN）</h2><p><img src="/2023/05/17/%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/2023-05-17-11-05-27.png"></p><h2 id="C-LOOK-调度算法"><a href="#C-LOOK-调度算法" class="headerlink" title="C-LOOK 调度算法"></a>C-LOOK 调度算法</h2><p><img src="/2023/05/17/%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/2023-05-17-11-05-38.png"></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/2023/05/17/%E7%A3%81%E7%9B%98%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/2023-05-17-11-05-53.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>操作系统</category>
+      
+      <category>第五章</category>
+      
+      <category>磁盘和固态硬盘</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>磁盘的结构</title>
+    <link href="/2023/05/17/%E7%A3%81%E7%9B%98%E7%9A%84%E7%BB%93%E6%9E%84/"/>
+    <url>/2023/05/17/%E7%A3%81%E7%9B%98%E7%9A%84%E7%BB%93%E6%9E%84/</url>
+    
+    <content type="html"><![CDATA[<h1 id="磁盘的结构"><a href="#磁盘的结构" class="headerlink" title="磁盘的结构"></a>磁盘的结构</h1><h2 id="磁盘、磁道、扇区"><a href="#磁盘、磁道、扇区" class="headerlink" title="磁盘、磁道、扇区"></a>磁盘、磁道、扇区</h2><p><img src="/2023/05/17/%E7%A3%81%E7%9B%98%E7%9A%84%E7%BB%93%E6%9E%84/2023-05-17-10-36-35.png"></p><h2 id="如何在磁盘中读-x2F-写数据"><a href="#如何在磁盘中读-x2F-写数据" class="headerlink" title="如何在磁盘中读&#x2F;写数据"></a>如何在磁盘中读&#x2F;写数据</h2><p><img src="/2023/05/17/%E7%A3%81%E7%9B%98%E7%9A%84%E7%BB%93%E6%9E%84/2023-05-17-10-36-52.png"></p><h2 id="盘面、柱面"><a href="#盘面、柱面" class="headerlink" title="盘面、柱面"></a>盘面、柱面</h2><p><img src="/2023/05/17/%E7%A3%81%E7%9B%98%E7%9A%84%E7%BB%93%E6%9E%84/2023-05-17-10-39-38.png"></p><h2 id="磁盘的物理地址"><a href="#磁盘的物理地址" class="headerlink" title="磁盘的物理地址"></a>磁盘的物理地址</h2><p><img src="/2023/05/17/%E7%A3%81%E7%9B%98%E7%9A%84%E7%BB%93%E6%9E%84/2023-05-17-10-39-58.png"></p><h2 id="磁盘分类"><a href="#磁盘分类" class="headerlink" title="磁盘分类"></a>磁盘分类</h2><p><img src="/2023/05/17/%E7%A3%81%E7%9B%98%E7%9A%84%E7%BB%93%E6%9E%84/2023-05-17-10-40-14.png"><br><img src="/2023/05/17/%E7%A3%81%E7%9B%98%E7%9A%84%E7%BB%93%E6%9E%84/2023-05-17-10-40-20.png"></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/2023/05/17/%E7%A3%81%E7%9B%98%E7%9A%84%E7%BB%93%E6%9E%84/2023-05-17-10-40-32.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>操作系统</category>
+      
+      <category>第五章</category>
+      
+      <category>磁盘和固态硬盘</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>IO设备的概念和分类</title>
+    <link href="/2023/05/17/IO%E8%AE%BE%E5%A4%87%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E5%88%86%E7%B1%BB/"/>
+    <url>/2023/05/17/IO%E8%AE%BE%E5%A4%87%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E5%88%86%E7%B1%BB/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>成组链接法</title>
+    <link href="/2023/05/17/%E6%88%90%E7%BB%84%E9%93%BE%E6%8E%A5%E6%B3%95/"/>
+    <url>/2023/05/17/%E6%88%90%E7%BB%84%E9%93%BE%E6%8E%A5%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<h1 id="成组链接法"><a href="#成组链接法" class="headerlink" title="成组链接法"></a>成组链接法</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>操作系统</category>
+      
+      <category>第四章</category>
+      
+      <category>文件系统基础</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>习题总结4-1</title>
+    <link href="/2023/05/16/%E4%B9%A0%E9%A2%98%E6%80%BB%E7%BB%934-1/"/>
+    <url>/2023/05/16/%E4%B9%A0%E9%A2%98%E6%80%BB%E7%BB%934-1/</url>
+    
+    <content type="html"><![CDATA[<h1 id="习题总结"><a href="#习题总结" class="headerlink" title="习题总结"></a>习题总结</h1><ol><li>UNIX操作系统中，所有设备都被视为特殊的文件，因为UNIX操作系统控制和访问外部设备的方式和访问一个文件的方式是相同的。</li><li>一个文件对应一个FCB，而一个文件目录项就是一个FCB</li><li>打开文件的操作是将该文件的FCB存入内存的活跃文件目录表，而不是将文件内容复制到主存，找到指定文件目录是打开文件之前的操作。</li><li>目录文件是FCB的集合，一个目录中既可能由子目录，又可能有数据文件，因此目录文件中存放的是子目录和数据文件的信息。</li><li>文件目录项即FCB，通常由文件基本信息、存储控制信息和使用信息组成。基本信息包括文件物理位置。文件目录项中显然不包括FCB的物理位置信息。</li><li>将文件描述信息从目录项中分离，即应用了索引结点的方法，磁盘的盘块中可以存放更多的目录项，查找文件时可以大大减少其I&#x2F;O信息量。</li><li>建立索引的目的是加快对表中记录的查找或排序1。它可以通过唯一性索引（unique）确保数据的唯一性，加快数据的检索速度。</li><li></li><li></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>操作系统</category>
+      
+      <category>第四章</category>
+      
+      <category>文件系统基础</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>虚拟文件系统</title>
     <link href="/2023/05/16/%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"/>
     <url>/2023/05/16/%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</url>
