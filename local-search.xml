@@ -4,6 +4,75 @@
   
   
   <entry>
+    <title>折半查找</title>
+    <link href="/2023/05/17/%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE/"/>
+    <url>/2023/05/17/%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE/</url>
+    
+    <content type="html"><![CDATA[<h1 id="折半查找"><a href="#折半查找" class="headerlink" title="折半查找"></a>折半查找</h1><ul><li>折半查找，又称“二分查找”，<font color = 'e84ba7'>仅适用于有序的顺序表。</font>—&gt;因为顺序表拥有随机访问的特性，链表没有。</li></ul><h2 id="算法的思想"><a href="#算法的思想" class="headerlink" title="算法的思想"></a>算法的思想</h2><ul><li>折半查找的基本思想：首先将给定值key与表中中间位置的元素（mid的指向元素）比较。mid&#x3D;low+high&#x2F;2（向下取整）</li><li>若key与中间元素相等，则查找成功，返回该元素的存储位置，即mid；</li><li>若key与中间元素不相等，则所需查找的元素只能在中间元素以外的前半部分或后半部分。（至于是前半部分还是后半部分要看key与mid所指向元素的大小关系）<ul><li>在查找表升序排列的情况下，若给定值key大于中间元素则所查找的元素只可能在后半部分。此时让low&#x3D;mid+1；</li><li>若给定值key小于中间元素则所查找的元素只可能在前半部分。此时让high&#x3D;mid-1；</li></ul></li></ul><h2 id="查找的效率分析"><a href="#查找的效率分析" class="headerlink" title="查找的效率分析"></a>查找的效率分析</h2><ul><li>对于给定序列7-10-13-16-19-29-32-33-37-41-43<br><img src="/2023/05/17/%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE/2023-05-17-23-23-46.png"></li></ul><h2 id="折半查找判定树的构造-–-gt-mid-x3D-⌊-low-high-x2F-2⌋"><a href="#折半查找判定树的构造-–-gt-mid-x3D-⌊-low-high-x2F-2⌋" class="headerlink" title="折半查找判定树的构造 –&gt;  mid &#x3D;⌊(low + high) &#x2F; 2⌋"></a>折半查找判定树的构造 –&gt;  mid &#x3D;⌊(low + high) &#x2F; 2⌋</h2><ul><li>如果当前low和high之间有<font color = 'e84ba7'>奇数个元素</font>,则mid分隔后，<font color = 'e84ba7'>左右两部分元素个数相等 </font>。<br><img src="/2023/05/17/%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE/2023-05-17-23-24-12.png"></li><li>如果当前low和high之间有<font color = 'e84ba7'>偶数个元素</font>,则mid分隔后，<font color = 'e84ba7'>左半部分比右半部分少一个元素 </font>。<br><img src="/2023/05/17/%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE/2023-05-17-23-24-32.png"></li><li><font color = 'e84ba7'>折半查找判定树中，若mid &#x3D;⌊(low + high) &#x2F; 2⌋，则对于任何一个结点，必有：右子树结点数 - 左子树结点数 &#x3D; 0 或 1</font><br><img src="/2023/05/17/%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE/2023-05-17-23-25-05.png"></li><li>折半查找的判定树一定是平衡二叉树<br><img src="/2023/05/17/%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE/2023-05-17-23-25-25.png"></li><li>判定结点关键字：左 &lt; 根 &lt; 右，满足二叉排序树的定义 —&gt; 失败结点：n + 1 (等于成功结点的空链域数)<br><img src="/2023/05/17/%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE/2023-05-17-23-25-52.png"></li></ul><h2 id="折半查找的查找效率"><a href="#折半查找的查找效率" class="headerlink" title="折半查找的查找效率"></a>折半查找的查找效率</h2><p><img src="/2023/05/17/%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE/2023-05-17-23-26-09.png"></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/2023/05/17/%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE/2023-05-17-23-26-20.png"></p><h2 id="拓展-–-gt-如果mid-x3D-⌈-low-high-x2F-2⌉"><a href="#拓展-–-gt-如果mid-x3D-⌈-low-high-x2F-2⌉" class="headerlink" title="拓展 –&gt; 如果mid &#x3D;  ⌈(low + high) &#x2F; 2⌉"></a>拓展 –&gt; 如果mid &#x3D;  ⌈(low + high) &#x2F; 2⌉</h2><ul><li>如果当前low和high之间有<font color = 'e84ba7'>奇数个元素</font>,则mid分隔后，<font color = 'e84ba7'>左右两部分元素个数相等 </font>。<br><img src="/2023/05/17/%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE/2023-05-17-23-26-41.png"></li><li>如果当前low和high之间有<font color = 'e84ba7'>偶数个元素</font>,则mid分隔后，<font color = 'e84ba7'>左半部分比右半部分多一个元素 </font>。<br><img src="/2023/05/17/%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE/2023-05-17-23-26-54.png"></li><li><font color = 'e84ba7'>折半查找判定树中，若mid &#x3D;  mid &#x3D;  ⌈(low + high) &#x2F; 2⌉，则对于任何一个结点，必有：左子树结点数 - 右子树结点数 &#x3D; 0 或 1</font><br><img src="/2023/05/17/%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE/2023-05-17-23-27-06.png"></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>数据结构</category>
+      
+      <category>第七章</category>
+      
+      <category>顺序查找和折半查找</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>顺序查找</title>
+    <link href="/2023/05/17/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/"/>
+    <url>/2023/05/17/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/</url>
+    
+    <content type="html"><![CDATA[<h1 id="顺序查找"><a href="#顺序查找" class="headerlink" title="顺序查找"></a>顺序查找</h1><h2 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h2><ul><li>顺序查找又称线性查找，它对顺序表和链表都是适用的。对于顺序表，可通过数组下标递增来顺序扫描每个元素；对于链表，可通过指针next来依次扫描每个元素。顺序查找通常分为对一般的无序线性表的顺序查找和对按关键字有序的线性表的顺序查找。</li></ul><h2 id="顺序查找的实现"><a href="#顺序查找的实现" class="headerlink" title="顺序查找的实现"></a>顺序查找的实现</h2><p><img src="/2023/05/17/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/2023-05-17-22-33-23.png"></p><h2 id="顺序查找的实现-带哨兵"><a href="#顺序查找的实现-带哨兵" class="headerlink" title="顺序查找的实现(带哨兵)"></a>顺序查找的实现(带哨兵)</h2><p><img src="/2023/05/17/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/2023-05-17-22-33-52.png"></p><ul><li>优点：无需判断是否越界，效率更高</li></ul><h2 id="查找效率分析"><a href="#查找效率分析" class="headerlink" title="查找效率分析"></a>查找效率分析</h2><p><img src="/2023/05/17/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/2023-05-17-22-35-34.png"></p><h2 id="顺序查找的优化-对有序表"><a href="#顺序查找的优化-对有序表" class="headerlink" title="顺序查找的优化(对有序表)"></a>顺序查找的优化(对有序表)</h2><ul><li>若在查找之前就已经知道表是关键字有序的，则查找失败时可以不用再比较到表的另一端就能返回查找失败的信息，从而降低顺序查找失败的平均查找长度。 </li><li>假设表L是按关键字从小到大排列的，查找的顺序是从前往后，待查找元素的关键字为key,当查找到第，个元素时，发现第z.个元素对应的关键字小于key,但第1+1个元素对应的关键字大于key,这时就可返回查找失败的信息，因为第，个元素之后的元素的关键字均大于key,所以表中不存在关键字为key的元素</li><li>有序线性表的查找可以是顺序存储结构也可以是链式存储结构<br><img src="/2023/05/17/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/2023-05-17-22-36-19.png"></li></ul><h2 id="用查找判定树分析ASL"><a href="#用查找判定树分析ASL" class="headerlink" title="用查找判定树分析ASL"></a>用查找判定树分析ASL</h2><p><img src="/2023/05/17/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/2023-05-17-22-38-24.png"></p><h2 id="顺序查找的优化-被查找的概率不相等"><a href="#顺序查找的优化-被查找的概率不相等" class="headerlink" title="顺序查找的优化(被查找的概率不相等)"></a>顺序查找的优化(被查找的概率不相等)</h2><p><img src="/2023/05/17/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/2023-05-17-22-39-10.png"></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/2023/05/17/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/2023-05-17-22-39-24.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>数据结构</category>
+      
+      <category>第七章</category>
+      
+      <category>顺序查找和折半查找</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>查找的基本概念</title>
+    <link href="/2023/05/17/%E6%9F%A5%E6%89%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"/>
+    <url>/2023/05/17/%E6%9F%A5%E6%89%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
+    
+    <content type="html"><![CDATA[<h1 id="查找的基本概念"><a href="#查找的基本概念" class="headerlink" title="查找的基本概念"></a>查找的基本概念</h1><h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>在数据集合中寻找满足某种条件的数据元素的过程称为查找。查找的结果一般分为两种：一是查找成功，即在数据集合中找到了满足条件的数据元素；二是查找失败</p><h2 id="查找表（查找结构）"><a href="#查找表（查找结构）" class="headerlink" title="查找表（查找结构）"></a>查找表（查找结构）</h2><p>用于查找的数据集合称为查找表，它由同一类型的数据元素（或记录）组成，可以是一个数组或链表等数据类型。对查找表经常进行的操作一般有4种：</p><ul><li>查询某个特定的数据元素是否在查找表中。</li><li>检索满足条件的某个特定的数据元素的各种属性。</li><li>在查找表中插入一个数据元素；④从查找表中删除某个数据元素。</li></ul><h2 id="静态查找表"><a href="#静态查找表" class="headerlink" title="静态查找表"></a>静态查找表</h2><p>若一个查找表的操作只涉及上述操作①和②，则无须动态地修改查找表， 此类查找表称为静态查找表。与此对应，需要动态地插入或删除的查找表称为动态查找表。适合静态查找表的查找方法有顺序查找、折半查找、散列查找等；适合动态查找表的查找方法有二叉排序树的查找、散列查找等。</p><h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><p>数据元素中唯一标识该元素的某个数据项的值，使用基于关键字的查找，查找结果应该是唯一的。例如，在由一个学生元素构成的数据集合中，学生元素中”学号”这一数据项的值唯一地标识一名学生。</p><h2 id="平均查找长度"><a href="#平均查找长度" class="headerlink" title="平均查找长度"></a>平均查找长度</h2><p><img src="/2023/05/17/%E6%9F%A5%E6%89%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/2023-05-17-22-23-01.png"></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/2023/05/17/%E6%9F%A5%E6%89%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/2023-05-17-22-24-07.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>数据结构</category>
+      
+      <category>第七章</category>
+      
+      <category>查找的基本概念</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>习题总结5-3</title>
     <link href="/2023/05/17/%E4%B9%A0%E9%A2%98%E6%80%BB%E7%BB%935-3/"/>
     <url>/2023/05/17/%E4%B9%A0%E9%A2%98%E6%80%BB%E7%BB%935-3/</url>
