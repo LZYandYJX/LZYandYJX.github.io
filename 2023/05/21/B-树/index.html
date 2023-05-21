@@ -23,21 +23,21 @@
 <meta property="og:site_name" content="崽崽">
 <meta property="og:description" content="B+树B+树的定义 每个分支结点最多有m课子树(孩子结点) 非叶根结点至少有两课子树，其他每个分支结点至少有⌈m&#x2F;2⌉课子树。 结点的子树个数与关键字个数相等。 所有叶结点包含全部关键字及指向相应记录的指针，叶结点中将关键字按大小顺序排序，并且相邻叶结点按大小顺序相互链接起来。–&gt;支持顺序查找 所有分支结点(可视为索引的索引)中仅包含它的各个子结点(即下一级的索引块)中关键字的最大">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://lzyjx.github.io.git/2023-05-21-21-45-37.png">
-<meta property="og:image" content="https://lzyjx.github.io.git/2023-05-21-21-48-55.png">
-<meta property="og:image" content="https://lzyjx.github.io.git/2023-05-21-21-49-29.png">
-<meta property="og:image" content="https://lzyjx.github.io.git/2023-05-21-21-55-07.png">
-<meta property="og:image" content="https://lzyjx.github.io.git/2023-05-21-21-55-17.png">
-<meta property="og:image" content="https://lzyjx.github.io.git/2023-05-21-21-57-37.png">
-<meta property="og:image" content="https://lzyjx.github.io.git/2023-05-21-21-57-45.png">
-<meta property="og:image" content="https://lzyjx.github.io.git/2023-05-21-22-03-06.png">
-<meta property="og:image" content="https://lzyjx.github.io.git/2023-05-21-22-03-13.png">
-<meta property="og:image" content="https://lzyjx.github.io.git/2023-05-21-22-03-36.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/21/B-%E6%A0%91/2023-05-21-21-45-37.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/21/B-%E6%A0%91/2023-05-21-21-48-55.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/21/B-%E6%A0%91/2023-05-21-21-49-29.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/21/B-%E6%A0%91/2023-05-21-21-55-07.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/21/B-%E6%A0%91/2023-05-21-21-55-17.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/21/B-%E6%A0%91/2023-05-21-21-57-37.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/21/B-%E6%A0%91/2023-05-21-21-57-45.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/21/B-%E6%A0%91/2023-05-21-22-03-06.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/21/B-%E6%A0%91/2023-05-21-22-03-13.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/21/B-%E6%A0%91/2023-05-21-22-03-36.png">
 <meta property="article:published_time" content="2023-05-21T13:36:15.000Z">
-<meta property="article:modified_time" content="2023-05-21T14:05:53.101Z">
+<meta property="article:modified_time" content="2023-05-21T14:34:55.039Z">
 <meta property="article:author" content="六只羊">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://lzyjx.github.io.git/2023-05-21-21-45-37.png">
+<meta name="twitter:image" content="https://lzyjx.github.io.git/2023/05/21/B-%E6%A0%91/2023-05-21-21-45-37.png">
   
   
   
@@ -291,18 +291,18 @@
 <li>所有叶结点包含全部关键字及指向相应记录的指针，叶结点中将关键字按大小顺序排序，并且相邻叶结点按大小顺序相互链接起来。–&gt;支持顺序查找</li>
 <li>所有分支结点(可视为索引的索引)中仅包含它的各个子结点(即下一级的索引块)中关键字的最大值及指向其子结点的指针。</li>
 </ol>
-<h2 id="m阶的B-树与m阶的B树的主要差异"><a href="#m阶的B-树与m阶的B树的主要差异" class="headerlink" title="m阶的B+树与m阶的B树的主要差异"></a>m阶的B+树与m阶的B树的主要差异</h2><p><img src="/2023-05-21-21-45-37.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="m阶的B-树与m阶的B树的主要差异"><a href="#m阶的B-树与m阶的B树的主要差异" class="headerlink" title="m阶的B+树与m阶的B树的主要差异"></a>m阶的B+树与m阶的B树的主要差异</h2><p><img src="/2023/05/21/B-%E6%A0%91/2023-05-21-21-45-37.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="B-树-VS-B树"><a href="#B-树-VS-B树" class="headerlink" title="B+树 VS B树"></a>B+树 VS B树</h2><ul>
 <li>m阶B+树 –&gt; 结点中的n个关键字对应n颗子树</li>
-<li>m阶B树  –&gt; 结点中的n个关键字对应n+1颗子树<br><img src="/2023-05-21-21-48-55.png" srcset="/img/loading.gif" lazyload><br><img src="/2023-05-21-21-49-29.png" srcset="/img/loading.gif" lazyload></li>
+<li>m阶B树  –&gt; 结点中的n个关键字对应n+1颗子树<br><img src="/2023/05/21/B-%E6%A0%91/2023-05-21-21-48-55.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/21/B-%E6%A0%91/2023-05-21-21-49-29.png" srcset="/img/loading.gif" lazyload></li>
 <li>m阶B+树 –&gt; 根结点的关键字数∈[ 1,m ],其他结点的关键字数n∈[ ⌈m&#x2F;2⌉,m ]</li>
-<li>m阶B树  –&gt; 根结点的关键字数∈[ 1,m-1 ],其他结点的关键字数n∈[ ⌈m&#x2F;2⌉-1,m-1 ]<br><img src="/2023-05-21-21-55-07.png" srcset="/img/loading.gif" lazyload><br><img src="/2023-05-21-21-55-17.png" srcset="/img/loading.gif" lazyload></li>
+<li>m阶B树  –&gt; 根结点的关键字数∈[ 1,m-1 ],其他结点的关键字数n∈[ ⌈m&#x2F;2⌉-1,m-1 ]<br><img src="/2023/05/21/B-%E6%A0%91/2023-05-21-21-55-07.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/21/B-%E6%A0%91/2023-05-21-21-55-17.png" srcset="/img/loading.gif" lazyload></li>
 <li>m阶B+树 –&gt; 在B+树中，叶结点包含全部关键字，非叶结点中出现过的关键字也会出现在叶结点中。</li>
-<li>m阶B树  –&gt; 在B树中，各结点中包含的关键字是不重复的<br><img src="/2023-05-21-21-57-37.png" srcset="/img/loading.gif" lazyload><br><img src="/2023-05-21-21-57-45.png" srcset="/img/loading.gif" lazyload></li>
+<li>m阶B树  –&gt; 在B树中，各结点中包含的关键字是不重复的<br><img src="/2023/05/21/B-%E6%A0%91/2023-05-21-21-57-37.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/21/B-%E6%A0%91/2023-05-21-21-57-45.png" srcset="/img/loading.gif" lazyload></li>
 <li>m阶B+树中 –&gt; 在B+树中，叶结点包含信息，所有非叶结点仅起索引作用，非叶结点中的每个索引项只含有对应子树的最大关键字和指向该子树的指针，不含有该关键字对应记录的存储地址。</li>
-<li>m阶B树 –&gt; B树的结点中都包含了关键字对应的记录的存储地址<br><img src="/2023-05-21-22-03-06.png" srcset="/img/loading.gif" lazyload><br><img src="/2023-05-21-22-03-13.png" srcset="/img/loading.gif" lazyload></li>
+<li>m阶B树 –&gt; B树的结点中都包含了关键字对应的记录的存储地址<br><img src="/2023/05/21/B-%E6%A0%91/2023-05-21-22-03-06.png" srcset="/img/loading.gif" lazyload><br><img src="/2023/05/21/B-%E6%A0%91/2023-05-21-22-03-13.png" srcset="/img/loading.gif" lazyload></li>
 </ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/2023-05-21-22-03-36.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/2023/05/21/B-%E6%A0%91/2023-05-21-22-03-36.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
