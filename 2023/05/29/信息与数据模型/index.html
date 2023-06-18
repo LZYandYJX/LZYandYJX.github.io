@@ -1,0 +1,1081 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="六只羊">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="信息与数据模型数据模型数据模型的概念 定义：数据模型（Data Model）也是一种模型，它是对现实世界中数据特征及数据之间联系的抽象。 数据模型是实现数据抽象的主要工具，也是数据库系统中用于信息表示和提供操作手段的形式化工具。 数据模型是数据库系统的核心和基础  数据处理三层抽象描述 一般可分为概念层、逻辑层、物理层   概念层   定义：数据抽象级别的最高层，其目的是按用户的观点来对现实世界建">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第二章：信息与数据模型">
+<meta property="og:url" content="https://lzyjx.github.io.git/2023/05/29/%E4%BF%A1%E6%81%AF%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:site_name" content="崽崽">
+<meta property="og:description" content="信息与数据模型数据模型数据模型的概念 定义：数据模型（Data Model）也是一种模型，它是对现实世界中数据特征及数据之间联系的抽象。 数据模型是实现数据抽象的主要工具，也是数据库系统中用于信息表示和提供操作手段的形式化工具。 数据模型是数据库系统的核心和基础  数据处理三层抽象描述 一般可分为概念层、逻辑层、物理层   概念层   定义：数据抽象级别的最高层，其目的是按用户的观点来对现实世界建">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/29/%E4%BF%A1%E6%81%AF%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/2023-05-29-17-32-30.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/29/%E4%BF%A1%E6%81%AF%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/2023-05-29-17-41-44.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/29/%E4%BF%A1%E6%81%AF%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/2023-05-29-17-43-08.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/29/%E4%BF%A1%E6%81%AF%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/2023-05-29-17-44-32.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/29/%E4%BF%A1%E6%81%AF%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/2023-05-29-17-50-05.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/29/%E4%BF%A1%E6%81%AF%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/2023-05-29-17-52-54.png">
+<meta property="og:image" content="https://lzyjx.github.io.git/2023/05/29/%E4%BF%A1%E6%81%AF%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/2023-05-29-22-03-12.png">
+<meta property="article:published_time" content="2023-05-29T08:03:49.000Z">
+<meta property="article:modified_time" content="2023-05-29T14:03:30.657Z">
+<meta property="article:author" content="六只羊">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lzyjx.github.io.git/2023/05/29/%E4%BF%A1%E6%81%AF%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/2023-05-29-17-32-30.png">
+  
+  
+  
+  <title>第二章：信息与数据模型 - 崽崽</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lzyjx.github.io.git","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>崽崽</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="第二章：信息与数据模型"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-05-29 16:03" pubdate>
+          2023年5月29日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          57 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">第二章：信息与数据模型</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="信息与数据模型"><a href="#信息与数据模型" class="headerlink" title="信息与数据模型"></a>信息与数据模型</h1><h2 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h2><h3 id="数据模型的概念"><a href="#数据模型的概念" class="headerlink" title="数据模型的概念"></a>数据模型的概念</h3><ul>
+<li>定义：数据模型（Data Model）也是一种模型，它是对现实世界中数据特征及数据之间联系的抽象。</li>
+<li>数据模型是实现数据抽象的主要工具，也是数据库系统中用于信息表示和提供操作手段的形式化工具。</li>
+<li>数据模型是数据库系统的核心和基础</li>
+</ul>
+<h3 id="数据处理三层抽象描述"><a href="#数据处理三层抽象描述" class="headerlink" title="数据处理三层抽象描述"></a>数据处理三层抽象描述</h3><ul>
+<li>一般可分为概念层、逻辑层、物理层</li>
+</ul>
+<ol>
+<li>概念层</li>
+</ol>
+<ul>
+<li>定义：数据抽象级别的最高层，其目的是按用户的观点来对现实世界建模。</li>
+<li>念层的数据模型称为概念数据模型，简称概念模型。</li>
+<li>概念模型独立于任何DBMS，但容易向DBMS所支持的逻辑模型转换。</li>
+<li>常用的概念模型有实体–联系模型（Entity-Relationship Model，简称E-R模型）。</li>
+</ul>
+<ol start="2">
+<li>逻辑层</li>
+</ol>
+<ul>
+<li>定义：是数据抽象的中间层，描述数据库数据整体的逻辑结构。</li>
+<li>逻辑层的数据抽象称为逻辑数据模型，简称数据模型。</li>
+<li>它是用户通过DBMS看到的现实世界，是基于计算机系统的观点来对数据进行建模和表示。</li>
+<li>常见的数据模型有：层次模型、网状模型、关系模型和面向对象模型。</li>
+</ul>
+<h3 id="数据模型的要素"><a href="#数据模型的要素" class="headerlink" title="数据模型的要素"></a>数据模型的要素</h3><ul>
+<li>数据模型通常由数据结构、数据操作和完整性约束三部分组成</li>
+</ul>
+<ol>
+<li>数据结构</li>
+</ol>
+<ul>
+<li>定义：描述数据库的组成对象，以及对象之间的联系</li>
+<li>描述的内容<ul>
+<li>与数据类型、内容、性质有关的对象</li>
+<li>与数据之间联系有关的对象</li>
+</ul>
+</li>
+<li>数据结构是对系统静态特性的描述</li>
+</ul>
+<ol start="2">
+<li>数据操作</li>
+</ol>
+<ul>
+<li>定义：对数据库中各种对象(型)的实例(值)允许执行的操作及有关的操作规则。</li>
+<li>类型：检索和更新（包括插入、删除、修改）。</li>
+<li>数据操作是对系统动态特性的描述。</li>
+</ul>
+<ol start="3">
+<li>数据的完整性约束条件</li>
+</ol>
+<ul>
+<li>完整性约束条件的定义：<ul>
+<li>是一组完整性规则。</li>
+<li>完整性规则主要描述数据结构中的数据之间的语义联系、数据之间的制约和依存关系，以及数据动态变化规则。</li>
+<li>数据约束主要用于保证数据的完整性、有效性和相容性。</li>
+</ul>
+</li>
+<li>数据模型对完整性约束条件的定义<ul>
+<li>数据模型应该反映和规定本数据模型必须遵守的基本的通用的完整性约束条件。</li>
+<li>提供定义完整性约束条件的机制，以反映具体应用所涉及的数据必须遵守的特定的语义约束条件。</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据模型与数据模式的区别"><a href="#数据模型与数据模式的区别" class="headerlink" title="数据模型与数据模式的区别"></a>数据模型与数据模式的区别</h3><ul>
+<li>数据模型是描述现实世界数据的手段和工具。</li>
+<li>数据模式是利用这个手段和工具对相互间的关系所进行的描述，是关于型的描述。它与DBMS和OS硬件无关。</li>
+<li>数据模型和数据模式都分了三个层次，其对应对关系如下：:<ul>
+<li>①概念模式：是用逻辑数据模型对一个单位的数据的描述。</li>
+<li>②外模式：外模式也称子模式或用户模式，是与应用程序对应的数据库视图，是数据库的一个子集，是用逻辑模型对用户所用到的那部分数据的描述。</li>
+<li>③内模式：是数据物理结构和存储方式的描述，是数据的数据库内部表示方式。内模式也称存储模式。</li>
+</ul>
+</li>
+</ul>
+<h2 id="概念模型"><a href="#概念模型" class="headerlink" title="概念模型"></a>概念模型</h2><h3 id="概念模型的基本概念"><a href="#概念模型的基本概念" class="headerlink" title="概念模型的基本概念"></a>概念模型的基本概念</h3><ul>
+<li>实体（Entity）<ul>
+<li>客观存在并可相互区别的事物称为实体。</li>
+<li>可以是具体的人、事、物或抽象的概念。</li>
+</ul>
+</li>
+<li>属性（Attribute）<ul>
+<li>实体所具有的某一特性称为属性。</li>
+<li>一个实体可以由若干个属性来刻画。</li>
+</ul>
+</li>
+<li>码（Key）：唯一标识实体的属性集称为码。</li>
+<li>域（Domain）：属性的取值范围称为该属性的域。</li>
+<li>实体型（Entity Type）：用实体名及其属性名集合来抽象和刻画同类实体称为实体型。</li>
+<li>实体集（Entity Set）：同一类型实体的集合称为实体集。</li>
+<li>联系（Relationship）<ul>
+<li>现实世界中事物内部以及事物之间的联系在信息世界中反映为实体内部的联系和实体之间的联系。</li>
+<li>实体内部的联系通常是指组成实体的各属性之间的联系。</li>
+<li>实体之间的联系通常是指不同实体集之间的联系。</li>
+</ul>
+</li>
+</ul>
+<h3 id="E-R模型"><a href="#E-R模型" class="headerlink" title="E-R模型"></a>E-R模型</h3><ul>
+<li>常用的概念层数据模型有实体-联系（Entity-Relationship，E-R）模型、语义对象模型。</li>
+</ul>
+<ol>
+<li>E-R图由实体、属性和联系三个要素构成。</li>
+</ol>
+<ul>
+<li>实体<ul>
+<li>客观存在并可相互区别的事物称为实体。</li>
+<li>E-R图中的实体用于表示现实世界具有相同属性描述的事物的集合，它不是某一个具体事物，而是某一种类别所有事物的统称。</li>
+<li><font color = e731aa>表示：矩形框，把实体名写在框内。</font></li>
+<li>每个实体由实体名唯一标记。</li>
+<li>每个实体对应于数据库中的一张数据库表，每个实体的具体取值对应于数据库表中的一条记录。</li>
+</ul>
+</li>
+<li>属性<ul>
+<li>用于表示实体的某种特征或者表示实体间关系的特征</li>
+<li><font color = e731aa>用一个实体通常包含多个属性，每个属性由属性名唯一标记，画在椭圆内 。</font></li>
+<li>E-R图中实体的属性对应于数据库表的字段。</li>
+<li>在E-R图中，属性是一个不可再分的最小单元。</li>
+<li>如果属性能够再分，则可以考虑将该属性进行细分，或者可以考虑将该属性“升格”为另一个实体。</li>
+</ul>
+</li>
+<li>联系<ul>
+<li>数据之间的关联集合，是客观存在的应用语义链。</li>
+<li>实体内部的联系通常是指组成实体的各属性之间的联系；。</li>
+<li>实体之间的联系通常是指不同实体集之间的联系。</li>
+<li><font color = e731aa>在E-R图中联系用菱形表示，框内写上联系名，并用连线将联系框与它所关联的实体连接起来。</font></li>
+<li>基数：表示一个实体到另一个实体之间关联的数目。</li>
+<li>从基数的角度将关系分为一对一(1:1)、一对多（1:n）、多对多(m:n)关系。</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>实体之间三类联系的图形表示：<br><img src="/2023/05/29/%E4%BF%A1%E6%81%AF%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/2023-05-29-17-32-30.png" srcset="/img/loading.gif" lazyload></li>
+</ol>
+<ul>
+<li>一对一联系（1:1）<ul>
+<li>定义：如果实体集A中的每个实体，在实体集B中至多有一个（也可以没有）实体与之联系，反之亦然，则称实体集A与实体集B有一对一联系，记为1:1。</li>
+<li>实例：学校里一个系和正系主任（假设一个系只有一个正主任，一个人只能担任一个系的正系主任），则系和正系主任是一对一联系。</li>
+</ul>
+</li>
+<li>一对多联系（1:n）<ul>
+<li>定义：如果对于实体集A中的每一个实体，实体集B中有n个实体（n≥0）与之联系，反之，对于实体集B中的每一个实体，实体集A中至多只有一个实体与之联系，则称实体集A与实体集B有一对多的联系，记为1:n。</li>
+<li>实例：一个系有多名教师。而每个教师只能在一个系工作，则系和教师之间是一对多联系。</li>
+</ul>
+</li>
+<li>多对多联系（m:n）<ul>
+<li>定义：如果对于实体集A中的每一个实体，实体集B中有n个实体（n≥0）与之联系，反之，对于实体集B中的每一个实体，实体集A中有m个实体（m≥0）与之联系，则称实体集A与实体集B有多对多的联系，记为m:n。</li>
+<li>实例：一门课程同时有若干个学生选修，而一个学生可以同时选修多门课程，则课程与学生之间具有多对多联系。</li>
+</ul>
+</li>
+</ul>
+<h3 id="E-R模型设计原则与设计步骤"><a href="#E-R模型设计原则与设计步骤" class="headerlink" title="E-R模型设计原则与设计步骤"></a>E-R模型设计原则与设计步骤</h3><ul>
+<li>ER模型设计原则：<ul>
+<li>属性应该存在于且只存在于某一个地方（实体或者关联）。——避免数据冗余。</li>
+<li>实体是一个单独的个体，不能存在于另一个实体中成为其属性。——避免“表中套表”。</li>
+<li>同一个实体在同一个E-R图内仅出现一次。</li>
+</ul>
+</li>
+<li>E-R模型设计步骤：<ul>
+<li>①划分和确定实体。</li>
+<li>②划分和确定联系。</li>
+<li>③确定属性。作为属性的“事物”与实体之间的联系，必须是一对多的关系，作为属性的“事物”不能再有需要描述的性质或与其他事物具有联系。</li>
+<li>④画出E-R模型。重复过程①～③，以找出所有实体集、关系集、属性和属值集，然后绘制E-R图。设计E-R分图，即用户视图的设计，在此基础上综合各E-R分图，形成E-R总图。</li>
+<li>⑤优化E-R模型。利用数据流程图，对E-R总图进行优化，消除数据实体间冗余的联系及属性，形成基本的E-R模型。</li>
+</ul>
+</li>
+</ul>
+<h2 id="逻辑模型"><a href="#逻辑模型" class="headerlink" title="逻辑模型"></a>逻辑模型</h2><ul>
+<li>数据模型是按其数据结构而命名的，根本区别在于数据之间联系的表示方式不同，即数据记录之间的联系方式不同。<table>
+<thead>
+<tr>
+<th align="center">数据模型</th>
+<th align="center">对应的数据结构</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">层次模型</td>
+<td align="center">树结构</td>
+</tr>
+<tr>
+<td align="center">网状模型</td>
+<td align="center">图结构</td>
+</tr>
+<tr>
+<td align="center">关系模型</td>
+<td align="center">二维表(关系)</td>
+</tr>
+<tr>
+<td align="center">面向对象模型</td>
+<td align="center">引用类型</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<ol>
+<li>层次模型</li>
+</ol>
+<ul>
+<li>层次数据模型是数据库系统中最早出现的数据模型，它用树形结构表示各类实体以及实体间的联系。</li>
+<li>实例<br><img src="/2023/05/29/%E4%BF%A1%E6%81%AF%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/2023-05-29-17-41-44.png" srcset="/img/loading.gif" lazyload></li>
+<li>层次模型对父子实体集间具有一对多的层次关系的描述非常自然、直观、容易理解。</li>
+<li>突出问题：<ul>
+<li>在层次模型中具有一定的存取路径，需按路径查看给定记录的值。</li>
+<li>层次模型比较适合于表示数据记录类型之间的一对多联系，而对于多对多的联系难以直接表示，需进行转换，将其分解成若干个一对多联系。</li>
+</ul>
+</li>
+<li>主要优缺点：<ul>
+<li>①数据结构较简单；查询效率高。</li>
+<li>②提供良好的完整性支持。</li>
+<li>③不易表示多对多的联系。</li>
+<li>④数据操作限制多、独立性较差。</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>网状模型</li>
+</ol>
+<ul>
+<li>网状模型是一个图结构，它是由字段（属性）、记录类型（实体型）和系(set)等对象组成的网状结构的模型。</li>
+<li>是一个不加任何条件的有向图。</li>
+<li>实例<br><img src="/2023/05/29/%E4%BF%A1%E6%81%AF%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/2023-05-29-17-43-08.png" srcset="/img/loading.gif" lazyload></li>
+<li>网状模型是用图结构来表示各类实体集以及实体集间的系。</li>
+<li>网状模型与层次模型的根本区别是：一个子结点可以有多个父结点；在两个结点之间可以有多种联系。</li>
+<li>同样，网状模型对于多对多的联系难以直接表示，需进行转换，将其分解成若干个一对多联系。</li>
+<li>主要优缺点：<ul>
+<li>①较为直接地描述现实世界。</li>
+<li>②存取效率较高。</li>
+<li>③结构较复杂、不易使用。</li>
+<li>④数据独立性较差。</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>关系模型</li>
+</ol>
+<ul>
+<li>关系就是一张二维表，它由行和列组成。关系模型将数据模型组织成表格的形式，这种表格在数学上称为关系。表中存放数据。在关系模型中实体以及实体之间的联系都用关系也就是二维表来表示。</li>
+<li>实例<br><img src="/2023/05/29/%E4%BF%A1%E6%81%AF%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/2023-05-29-17-44-32.png" srcset="/img/loading.gif" lazyload></li>
+<li>主要优缺点：<ul>
+<li>有坚实的理论基础；</li>
+<li>结构简单、易用；</li>
+<li>数据独立性及安全性；</li>
+<li>查询效率较低。</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li>面向对象模型</li>
+</ol>
+<ul>
+<li>它是用面向对象的观点来描述现实世界中的事物（对象）的逻辑结构和对象间的联系等的数据模型。</li>
+<li>对象：是对现实世界中的事物的高度抽象，每个对象是状态和行为的封装。<ul>
+<li>对象的状态是属性的集合。</li>
+<li>行为是在该对象上操作方法的集合。</li>
+</ul>
+</li>
+<li>不仅可以处理各种复杂多样的数据结构，而且具有数据和行为相结合的特点。</li>
+<li>优点：<ul>
+<li>①适合处理各种各样的数据类型。</li>
+<li>②面向对象程序设计与数据库技术相结合。</li>
+<li>③提高开发效率。</li>
+<li>④改善数据访问。</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>①没有准确的定义。</li>
+<li>②维护困难。</li>
+<li>③不适合所有的应用。</li>
+</ul>
+</li>
+</ul>
+<h2 id="概念模型向逻辑模型的转换"><a href="#概念模型向逻辑模型的转换" class="headerlink" title="概念模型向逻辑模型的转换"></a>概念模型向逻辑模型的转换</h2><ul>
+<li>E-R图转换为关系模型转换的实质：<ul>
+<li>将实体、实体的属性和实体之间的联系转换为关系模式。</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>实体的转换</li>
+</ol>
+<ul>
+<li>原则：<ul>
+<li>一个实体对应一个关系模型</li>
+<li>实体的名称即是关系模型的名称</li>
+<li>实体的属性就是关系模型的属性</li>
+<li>实体的码就是关系模型的码</li>
+</ul>
+</li>
+<li>注意的问题：<ul>
+<li>属性域的问题。</li>
+<li>非原子属性的问题</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>联系的转换</li>
+</ol>
+<ul>
+<li>1:1联系转换<br>※ 方法一：将1:1联系转换为一个独立的关系模式，与该联系相连的各实体的码以及联系本身的属性均转换为关系模式的属性，每个实体的码均是该关系模式的码。<ul>
+<li>实例：它描述的是实体学生和校园卡之间的联系，这里假设:一个学生只能办理一张校园卡，一张校园卡只能属于一个学生，因此，联系的类型是1:1。转换情况为：</li>
+<li>实体转换：学生（学号，姓名），校园卡（卡号，余额）；</li>
+<li>联系办卡的转换：办卡（学号，卡号，办卡日期）。<br>※ 方法二：</li>
+<li>与任意一端对应的关系模式合并。合并时，需要在该关系模式的属性中加入另一个关系模式的码和联系本身的属性。<br>转换情况为：</li>
+<li>学生（学号，卡号，姓名，办卡日期）</li>
+<li>校园卡（卡号，学号，余额，办卡日期）<br><img src="/2023/05/29/%E4%BF%A1%E6%81%AF%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/2023-05-29-17-50-05.png" srcset="/img/loading.gif" lazyload></li>
+</ul>
+</li>
+<li>1:n联系转换<br>※ 方法一：转换为一个独立的关系模式，与该联系相连的各实体的码以及联系本身的属性均转换为关系模式的属性，而关系模式的码为n端实体的码。<ul>
+<li>实例：它描述的是实体学生和班级之间的联系，这里假设：一个学生只能在一个班级学习，一个班级包含多个学生。因此，联系的类型是1:n。转换情况为：</li>
+<li>实体转换：学生（学号，性别，姓名），班级（班号，班名）；</li>
+<li>联系组成的转换:组成（学号，班号）。<br>※ 方法二：与n端对应的关系模式合并，在该关系模式中加入1端实体的码和联系本身的属性.<br>转换情况为：</li>
+<li>实体转换：学生（学号，性别，姓名），班级（班号，班名）。</li>
+<li>联系与学生一端合并，则关系模型学生变为：学生（学号，班号，性别，姓名）。<br><img src="/2023/05/29/%E4%BF%A1%E6%81%AF%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/2023-05-29-17-52-54.png" srcset="/img/loading.gif" lazyload></li>
+</ul>
+</li>
+<li>m:n联系转换<ul>
+<li>m:n联系不能由一个实体的码唯一标识，必须由所关联实体的码共同标识。</li>
+<li>需要将联系单独转换为一个独立的关系模式，与该联系相连的各实体的码以及联系本身的属性均转换为关系模式的属性，每个实体的码组成关系模式的码或关系模式的码的一部分。</li>
+<li>实例：它描述的是实体学生和课程之间的联系，这里假设：一个学生可以选修多门课程，一门课程可以由多个学生选修。因此，联系的类型是m:n。<br>转换情况为：</li>
+<li>实体转换：学生（学号，性别，姓名）和课程（课程号，课程名）；</li>
+<li>联系选修的转换：选修（学号，课程号，成绩）。<br><img src="/2023/05/29/%E4%BF%A1%E6%81%AF%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B/2023-05-29-22-03-12.png" srcset="/img/loading.gif" lazyload></li>
+</ul>
+</li>
+</ul>
+<h2 id="关系模型"><a href="#关系模型" class="headerlink" title="关系模型"></a>关系模型</h2><ul>
+<li>关系是一个由行和列组成的二维表</li>
+</ul>
+<h3 id="关系数据结构"><a href="#关系数据结构" class="headerlink" title="关系数据结构"></a>关系数据结构</h3><ol>
+<li>关系中基本术语</li>
+</ol>
+<ul>
+<li>元组<ul>
+<li>元组也称记录，关系表中的每行对应一个元组，组成元组的元素称为分量。数据库中的一个实体或实体之间的一个联系均使用一个元组来表示。</li>
+</ul>
+</li>
+<li>属性<ul>
+<li>关系中的每列对应一个域。由于域可以相同，因此为了加以区分，必须给每列一个命名。这个命名就称为属性。N目关系必有n各属性。</li>
+<li>属性具有型和值两层含义：型是指字段名和属性值域；值是指属性具体的取值。</li>
+<li>关系中的字段名具有表示列的作用，所以在同一个关系中的字段名(列名)不能相同。一个关系中通常有多个属性，属性用于表示实体的特征。</li>
+</ul>
+</li>
+<li>候选码<ul>
+<li>若关系中的某一属性或属性组的值能唯一地标识一个元组，则称该属性或属性组为候选码。</li>
+</ul>
+</li>
+<li>主码<ul>
+<li>若一个关系中有多个候选码，则选定其中一个为主码(也可以成为主键、主关键字)</li>
+<li>例如，假设关系中没有重名的学生，则“姓名”就是该Student关系的主码；若在Student关系中增加学生的“学号”属性，则Student关系的候选码为“姓名”和“学号”两个，应当选择“学号”属性作为主码。当包含两个或更多个的键成为复合码(键).</li>
+<li>主码不仅可以标识唯一的行，还可以建立与别的表之间的联系。</li>
+<li>主码的作用：<br>※ 唯一表示关系的每行。<br>※ 作为关联表的外键，链接两个表<br>※ 使用主码值来组织关系的存储<br>※ 使用主码索引块快速检索数据</li>
+</ul>
+</li>
+<li>键的主要类型如下：<ul>
+<li>超键：在一个关系中，能唯一标识元组的属性或属性集称为关系的超键。</li>
+<li>候选键：如果一个属性集能唯一标识元组，且又不含多余的属性，那么这个属性集称为关系的候选键。</li>
+<li>主键：如果一个关系中有多个候选键，则选择一个键为关系的主键。用主键可以实现关系定义中，“表中任意两行(元组)不能相同”的约束。</li>
+</ul>
+</li>
+<li>全码<ul>
+<li>在最简单的情况下，候选码只包含一个属性；在最极端的情况下，关系模式的所有属性都是这个关系的候选码，称为全码。全码是候选码的特例。</li>
+</ul>
+</li>
+<li>主属性和非主属性<ul>
+<li>在关系中，候选码中的属性称为主属性，不包含在任何候选码中的属性称为非主属性。</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>数据库中关系的类型</li>
+</ol>
+<ul>
+<li>基本关系(通常又称为基本表或基表)–&gt;基本表是实际存在的表，它是实际存储数据的逻辑表示。</li>
+<li>查询表–&gt;是查询结果表或查询中生成的临时表</li>
+<li>视图表–&gt;是由基本表或其他视图表导出的表，是虚表，不对应实际存储的数据</li>
+</ul>
+<h3 id="关系操作"><a href="#关系操作" class="headerlink" title="关系操作"></a>关系操作</h3><ol>
+<li>关系操作的基本内容</li>
+</ol>
+<ul>
+<li>关系操作包括数据查询、数据维护和数据控制三大功能。<ul>
+<li>数据查询指数据检索、统计、排序、分组以及用户对信息的需求等功能。</li>
+<li>数据维护指数据添加、删除、修改等数据自身更新的功能。</li>
+<li>数据控制是为了保证数据的安全性和完整性而采用的数据存取控制及并发控制等功能。</li>
+</ul>
+</li>
+</ul>
+<h3 id="关系的完整性"><a href="#关系的完整性" class="headerlink" title="关系的完整性"></a>关系的完整性</h3><ul>
+<li>关系模型允许定义3类完整性约束：实体完整性、参照完整性和用户自定义的完整性。</li>
+</ul>
+<ol>
+<li>实体完整性</li>
+</ol>
+<ul>
+<li>实体完整性规则：若属性A是基本关系R的主属性，则属性A不能取空值。<ul>
+<li>例如，学生关系中，“学生(学号，姓名，性别，专业号，年龄)”中，“学号”为主码，则学号不能取空值。</li>
+</ul>
+</li>
+<li>实体完整性规则规定基本关系的主码不能取空值，若主码由多个属性组成，则所有这些属性都不可以取空值。</li>
+</ul>
+<ol start="2">
+<li>参照完整性</li>
+</ol>
+<ul>
+<li>设F是基本关系R的一个或一组属性，但不是关系R的主码。如果F与基本关系S的主码Ks相对应，则称F是基本关系的外码，并称基本关系R为参照关系，基本关系S为被参照关系或目标关系。</li>
+<li>注意：主码(主键)与外码(外键)的列名，唯一的要求是它们的值的域必须相同。</li>
+<li>显然，被参照关系S的主码Ks和参照关系R的外码F必须在同一个(或一组)域上。</li>
+<li>例子：<br>学生关系和专业关系表如下，其中主码标红：<br>学生(<font color = red>学号</font>，姓名，性别，专业号)<br>专业(<font color = red>专业号</font>，专业名)</li>
+<li>在上面的例子中，学生关系的“专业号”属性与专业关系的主码“专业号”相对应，因此“专业号”属性是学生关系的外码。这里专业关系是被参照关系，学生关系为参照关系。</li>
+<li>参照完整性规则：若属性(或属性组)F是基本关系R的外码，它与基本关系S的主码Ks相对应(基本关系R和S有可能是同一关系)，则对于R中每个元组在F上的值必须为以下值：<ul>
+<li>取空值(F的每个属性值均为空值)</li>
+<li>等于S中某个元组的主码值。</li>
+<li>以上面的例子来说，在学生关系中每个元组的“专业号”属性只能取下面两类值:<br>※ 空值，表示尚未给该学生分配专业。<br>※ 非空值，这时该值必须是专业关系中某个元组的“专业号”值，表示该学生不可能分配到一个不存在的专业中，即被参照关系“专业”中一定存在一个元组，他的主码值等于该参照关系“学生”中的外码值。</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>用户定义的完整性</li>
+</ol>
+<ul>
+<li>关系数据库DBMS可以为用户实现如下自定义完整性约束<ul>
+<li>定义域的数据类型和取值范围</li>
+<li>定义属性的数据类型和取值范围</li>
+<li>定义属性的默认值</li>
+<li>定义属性是否允许空值</li>
+<li>定义属性取值的唯一性</li>
+<li>定义属性间的数据依赖性。</li>
+</ul>
+</li>
+</ul>
+<h2 id="题目总结"><a href="#题目总结" class="headerlink" title="题目总结"></a>题目总结</h2><ul>
+<li>实体型是指具有相同属性集合的实体的抽象描述。它定义了一类具有相似特征和行为的实体。例如，在学生信息管理系统中，”学生”可以被视为一个实体型，它描述了所有学生具有的共同属性，如学号、姓名、年龄等。</li>
+<li>实体型是指具有相同属性集合的实体的抽象描述。它定义了一类具有相似特征和行为的实体。例如，在学生信息管理系统中，”学生”可以被视为一个实体型，它描述了所有学生具有的共同属性，如学号、姓名、年龄等。</li>
+<li>实体型与实体集之间的关系是型与值。</li>
+<li>在关系模型中，域（Domain）是指属性（Attribute）可能取值的集合或范围。它定义了属性的数据类型和取值约束。</li>
+<li></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-chain-item">数据库</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>第二章：信息与数据模型</div>
+      <div>https://lzyjx.github.io.git/2023/05/29/信息与数据模型/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>六只羊</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年5月29日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/05/29/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/" title="第一章：数据库系统概述">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">第一章：数据库系统概述</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/05/27/JavaServlet%E5%9F%BA%E7%A1%80/" title="第9章 Java Servlet基础">
+                        <span class="hidden-mobile">第9章 Java Servlet基础</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

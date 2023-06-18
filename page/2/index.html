@@ -224,15 +224,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/05/17/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/" target="_self">
-          顺序查找
+        <a href="/2023/05/23/%E5%9B%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" target="_self">
+          图的基本操作
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/17/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/23/%E5%9B%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" target="_self">
         <div>
-          顺序查找算法思想 顺序查找又称线性查找，它对顺序表和链表都是适用的。对于顺序表，可通过数组下标递增来顺序扫描每个元素；对于链表，可通过指针next来依次扫描每个元素。顺序查找通常分为对一般的无序线性表的顺序查找和对按关键字有序的线性表的顺序查找。  顺序查找的实现 顺序查找的实现(带哨兵)  优点：无需判断是否越界，效率更高  查找效率分析 顺序查找的优化(对有序表) 若在查找之前就已经知道表是关
+          图的基本操作 基本操作 Adjacent(G,x,y):判断图G是否存在边&lt;x,y&gt;或(x,y)。   无向图 有向图 代码实现123int Adjacent(Graph *graph, int src, int dest) &#123;    return graph-&gt;edges[src][dest];&#125;   Neighbors(G, x):列出图G中与结点x邻接的
         </div>
       </a>
 
@@ -240,8 +240,388 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-05-17 22:24" pubdate>
-              2023-05-17
+            <time datetime="2023-05-23 10:50" pubdate>
+              2023-05-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">数据结构</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%9B%BE/" class="category-chain-item">第六章 图</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%9B%BE/%E5%9B%BE%E7%9A%84%E5%AD%98%E5%82%A8%E5%8F%8A%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" class="category-chain-item">图的存储及基本操作</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/05/23/%E5%9B%BE%E7%9A%84%E5%AD%98%E5%82%A8-%E5%8D%81%E5%AD%97%E9%93%BE%E8%A1%A8%E6%B3%95%E3%80%81%E9%82%BB%E6%8E%A5%E5%A4%9A%E9%87%8D%E8%A1%A8/" target="_self">
+          图的存储--十字链表法、邻接多重表
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/23/%E5%9B%BE%E7%9A%84%E5%AD%98%E5%82%A8-%E5%8D%81%E5%AD%97%E9%93%BE%E8%A1%A8%E6%B3%95%E3%80%81%E9%82%BB%E6%8E%A5%E5%A4%9A%E9%87%8D%E8%A1%A8/" target="_self">
+        <div>
+          图的存储–十字链表法、邻接多重表邻接矩阵、邻接表存储有向图 十字链表存储有向图 十字链表法性能分析 邻接矩阵、邻接表存储无向图 邻接多重表存储无向图 邻接多重表性能分析 总结
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-05-23 10:44" pubdate>
+              2023-05-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">数据结构</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%9B%BE/" class="category-chain-item">第六章 图</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%9B%BE/%E5%9B%BE%E7%9A%84%E5%AD%98%E5%82%A8%E5%8F%8A%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" class="category-chain-item">图的存储及基本操作</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/05/23/%E5%9B%BE%E7%9A%84%E5%AD%98%E5%82%A8-%E9%82%BB%E6%8E%A5%E8%A1%A8%E6%B3%95/" target="_self">
+          图的存储--邻接表法
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/23/%E5%9B%BE%E7%9A%84%E5%AD%98%E5%82%A8-%E9%82%BB%E6%8E%A5%E8%A1%A8%E6%B3%95/" target="_self">
+        <div>
+          图的存储–邻接表法邻接表法（顺序+链式存储） 邻接表法 总结 代码实现1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859#include&lt;stdio.h&gt;#include&lt;stdlib.h&gt;#define M
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-05-23 10:35" pubdate>
+              2023-05-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">数据结构</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%9B%BE/" class="category-chain-item">第六章 图</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%9B%BE/%E5%9B%BE%E7%9A%84%E5%AD%98%E5%82%A8%E5%8F%8A%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" class="category-chain-item">图的存储及基本操作</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/05/23/%E5%9B%BE%E7%9A%84%E5%AD%98%E5%82%A8-%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E6%B3%95/" target="_self">
+          图的存储--邻接矩阵法
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/23/%E5%9B%BE%E7%9A%84%E5%AD%98%E5%82%A8-%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E6%B3%95/" target="_self">
+        <div>
+          图的存储–邻接矩阵法 邻接矩阵存储带权图 邻接矩阵性能分析 回顾：对称矩阵的压缩 邻接矩阵法的性质 总结 代码实现123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960#include &lt;stdio.h&gt;#include
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-05-23 10:27" pubdate>
+              2023-05-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">数据结构</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%9B%BE/" class="category-chain-item">第六章 图</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%9B%BE/%E5%9B%BE%E7%9A%84%E5%AD%98%E5%82%A8%E5%8F%8A%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" class="category-chain-item">图的存储及基本操作</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/05/23/JSP%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/" target="_self">
+          第4章 JSP内置对象
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/23/JSP%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/" target="_self">
+        <div>
+          JSP内置对象request对象 在JSP中，内置对象request封装了用户提交的信息，那么该对象调用相应的方法可以获取封装的信息，即使用该对象可以获取用户提交的信息。 用户通常用HTML的form表单(也称form标记)请求访问服务器的某个JSP页面，并提交必要信息给所请求的JSP页面(servlet).123&lt;form action = &quot;请求访问的页面或Servlet&qu
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-05-23 08:48" pubdate>
+              2023-05-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/JavaWeb/" class="category-chain-item">JavaWeb</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/05/22/%E6%95%B0%E6%8D%AE%E5%BA%93/" target="_self">
+          数据库
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/22/%E6%95%B0%E6%8D%AE%E5%BA%93/" target="_self">
+        <div>
+          SQLSQL 分类    分类 全称    DDL Data Definition Language   DML Data Manipulation   DQL Data Query Language   DCL Data Control Language   DLL数据库操作1234567891011121314-- 查询所有数据库show databases;-- 查询当前数据库select
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-05-22 10:46" pubdate>
+              2023-05-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Mysql/" class="category-chain-item">Mysql</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/05/21/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/" target="_self">
+          散列查找
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/21/%E6%95%A3%E5%88%97%E6%9F%A5%E6%89%BE/" target="_self">
+        <div>
+          散列查找散列表 处理冲突的方法—拉链法 散列查找  装填因子越大，表示装填的记录越“满”，发生冲突的可能性越大，反之发生冲突的可能性越小。  常见的散列函数 除留余数法–H(key) &#x3D; key % p 直接定址法 –&gt; H(key) &#x3D; key 或 H(key) &#x3D; a*key + b 数字分析法 –&gt; 选取数码分布较为均匀的若干位作为散列地址 平方取中
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-05-21 22:06" pubdate>
+              2023-05-21
             </time>
           </div>
         
@@ -266,7 +646,7 @@
   
     <span>></span>
     
-  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE%E5%92%8C%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE/" class="category-chain-item">顺序查找和折半查找</a>
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/%E6%95%A3%E5%88%97%E8%A1%A8/" class="category-chain-item">散列表</a>
   
   
 
@@ -292,15 +672,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/05/17/%E6%9F%A5%E6%89%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" target="_self">
-          查找的基本概念
+        <a href="/2023/05/21/B-%E6%A0%91/" target="_self">
+          B+树
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/17/%E6%9F%A5%E6%89%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/21/B-%E6%A0%91/" target="_self">
         <div>
-          查找的基本概念查找在数据集合中寻找满足某种条件的数据元素的过程称为查找。查找的结果一般分为两种：一是查找成功，即在数据集合中找到了满足条件的数据元素；二是查找失败 查找表（查找结构）用于查找的数据集合称为查找表，它由同一类型的数据元素（或记录）组成，可以是一个数组或链表等数据类型。对查找表经常进行的操作一般有4种：  查询某个特定的数据元素是否在查找表中。 检索满足条件的某个特定的数据元素的各种属
+          B+树B+树的定义 每个分支结点最多有m课子树(孩子结点) 非叶根结点至少有两课子树，其他每个分支结点至少有⌈m&#x2F;2⌉课子树。 结点的子树个数与关键字个数相等。 所有叶结点包含全部关键字及指向相应记录的指针，叶结点中将关键字按大小顺序排序，并且相邻叶结点按大小顺序相互链接起来。–&gt;支持顺序查找 所有分支结点(可视为索引的索引)中仅包含它的各个子结点(即下一级的索引块)中关键字的最大
         </div>
       </a>
 
@@ -308,8 +688,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-05-17 22:17" pubdate>
-              2023-05-17
+            <time datetime="2023-05-21 21:36" pubdate>
+              2023-05-21
             </time>
           </div>
         
@@ -334,7 +714,7 @@
   
     <span>></span>
     
-  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/%E6%9F%A5%E6%89%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="category-chain-item">查找的基本概念</a>
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/B%E6%A0%91%E5%92%8CB-%E6%A0%91/" class="category-chain-item">B树和B+树</a>
   
   
 
@@ -360,15 +740,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/05/17/%E4%B9%A0%E9%A2%98%E6%80%BB%E7%BB%935-3/" target="_self">
-          习题总结5-3
+        <a href="/2023/05/18/B%E6%A0%91%E7%9A%84%E6%8F%92%E5%85%A5%E5%92%8C%E5%88%A0%E9%99%A4/" target="_self">
+          B树的插入和删除
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/17/%E4%B9%A0%E9%A2%98%E6%80%BB%E7%BB%935-3/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/18/B%E6%A0%91%E7%9A%84%E6%8F%92%E5%85%A5%E5%92%8C%E5%88%A0%E9%99%A4/" target="_self">
         <div>
-          习题总结 磁盘是可共享设备（分时共享），是指某段时间内可以有多个用户进行访问。但某一时刻只能有一个作业可以访问。 顺序访问按从前到后的顺序对数据进行读写操作，如磁带。直接访问或随机访问，则可以按任意的次序对数据进行读写操作，如光盘、磁盘、U盘等。 磁盘调度的目的是缩短找道时间。磁盘调度是对访问磁道次序的调度，若没有合适的磁盘调度，则寻找时间会大大增加。 文件以块为单位存放于磁盘中，文件的读写也以块
+          B树的插入和删除B树的插入 在B树中搜索插入位置： 从根节点开始，根据插入的关键字，向下逐层搜索合适的插入位置。 如果关键字已经存在于B树中，根据需要更新节点的值或执行其他操作。   在叶子节点中插入关键字： 如果找到了合适的叶子节点，将关键字插入到该节点中的适当位置。插入过程可以采用二分查找的方式，保持关键字的有序性。   检查叶子节点是否上溢： 如果插入关键字后，叶子节点的关键字个数超过了B树
         </div>
       </a>
 
@@ -376,8 +756,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-05-17 19:39" pubdate>
-              2023-05-17
+            <time datetime="2023-05-18 22:14" pubdate>
+              2023-05-18
             </time>
           </div>
         
@@ -392,17 +772,17 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">数据结构</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%94%E7%AB%A0/" class="category-chain-item">第五章</a>
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/" class="category-chain-item">第七章</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%94%E7%AB%A0/%E7%A3%81%E7%9B%98%E5%92%8C%E5%9B%BA%E6%80%81%E7%A1%AC%E7%9B%98/" class="category-chain-item">磁盘和固态硬盘</a>
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/B%E6%A0%91%E5%92%8CB-%E6%A0%91/" class="category-chain-item">B树和B+树</a>
   
   
 
@@ -428,15 +808,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/05/17/%E4%B9%A0%E9%A2%98%E6%80%BB%E7%BB%935-2/" target="_self">
-          习题总结5-2
+        <a href="/2023/05/18/B%E6%A0%91/" target="_self">
+          B树
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/17/%E4%B9%A0%E9%A2%98%E6%80%BB%E7%BB%935-2/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/18/B%E6%A0%91/" target="_self">
         <div>
-          习题总结 设备独立性是指用户编程时使用的设备与实际使用的设备无关。 为了使并发进程能有效地进行输入和输出，最好采用缓冲池结构的缓冲技术 输入井和输出井是在磁盘上开辟的存储空间，而输入&#x2F;输出缓冲区则是在内存中开辟的，因为CPU速度比I&#x2F;O设备高很多，缓冲池通常在主存中建立。 缓冲区管理着重要考虑的问题是实现进程访问缓冲区的同步 设备的分配方式主要由独享分配、共享分配和虚拟分配 提
+          B树B树的定义 所谓m阶B树是所有结点的平衡因子均等于。的m路平衡查找树。 一棵成阶B树或为空树，或为满足如下特性的m叉树: 树中每个结点至多有％棵子树，即至多含有彻-1个关键字。 若根结点不是叶结点，则至少有两棵子树。 除根结点外的所有非叶结点至少有「m&#x2F;2⌉棵子树，即至少含有⌈m&#x2F;2⌉-1个关键字。 所有的叶结点都出现在同一层次上，并且不带信息（可以视为外部结点或类似于折半
         </div>
       </a>
 
@@ -444,8 +824,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-05-17 19:39" pubdate>
-              2023-05-17
+            <time datetime="2023-05-18 21:58" pubdate>
+              2023-05-18
             </time>
           </div>
         
@@ -460,425 +840,17 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">数据结构</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%94%E7%AB%A0/" class="category-chain-item">第五章</a>
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/" class="category-chain-item">第七章</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%94%E7%AB%A0/%E8%AE%BE%E5%A4%87%E7%8B%AC%E7%AB%8B%E6%80%A7%E8%BD%AF%E4%BB%B6/" class="category-chain-item">设备独立性软件</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/05/17/%E7%BC%93%E5%86%B2%E5%8C%BA%E7%AE%A1%E7%90%86/" target="_self">
-          缓冲区管理
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/17/%E7%BC%93%E5%86%B2%E5%8C%BA%E7%AE%A1%E7%90%86/" target="_self">
-        <div>
-          缓冲区管理什么是缓冲区？有什么作用？ 缓冲区有什么作用？ 单缓冲 双缓冲 使用单&#x2F;双缓冲在通信时的区别 循环缓冲区 缓冲池 总结
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-05-17 18:57" pubdate>
-              2023-05-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%94%E7%AB%A0/" class="category-chain-item">第五章</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%94%E7%AB%A0/I-O%E7%AE%A1%E7%90%86%E6%A6%82%E8%BF%B0/" class="category-chain-item">I/O管理概述</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/05/17/%E8%AE%BE%E5%A4%87%E7%9A%84%E5%88%86%E9%85%8D%E4%B8%8E%E5%9B%9E%E6%94%B6/" target="_self">
-          设备的分配与回收
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/17/%E8%AE%BE%E5%A4%87%E7%9A%84%E5%88%86%E9%85%8D%E4%B8%8E%E5%9B%9E%E6%94%B6/" target="_self">
-        <div>
-          设备的分配与回收设备分配时应考虑的因素 静态分配和动态分配 设备分配管理中的数据结构 设备控制表（DCT） 控制器控制表（COCT） 通道控制表（CHCT） 系统设备表（SDT） 设备分配的步骤 根据进程请求的物理设备名查找SDT（注：物理设备名是进程请求分配设备时提供的参数） 根据SDT找到DCT，若设备忙碌则将进程PCB挂到设备等待队列中，不忙碌则将设备分配给进程 根据DCT找到COCT，若控
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-05-17 18:38" pubdate>
-              2023-05-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%94%E7%AB%A0/" class="category-chain-item">第五章</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%94%E7%AB%A0/%E8%AE%BE%E5%A4%87%E7%8B%AC%E7%AB%8B%E6%80%A7%E8%BD%AF%E4%BB%B6/" class="category-chain-item">设备独立性软件</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/05/17/%E5%81%87%E8%84%B1%E6%9C%BA%E6%8A%80%E6%9C%AF-SPOOLing%E6%8A%80%E6%9C%AF/" target="_self">
-          假脱机技术(SPOOLing技术)
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/17/%E5%81%87%E8%84%B1%E6%9C%BA%E6%8A%80%E6%9C%AF-SPOOLing%E6%8A%80%E6%9C%AF/" target="_self">
-        <div>
-          假脱机技术(SPOOLing技术)什么是脱机技术 假脱机技术——输入井和输出井 假脱机技术——输入进程和输出进程 假脱机技术——输入&#x2F;输出缓冲区 共享打印机原理分析 总结
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-05-17 18:17" pubdate>
-              2023-05-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%94%E7%AB%A0/" class="category-chain-item">第五章</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%94%E7%AB%A0/%E8%AE%BE%E5%A4%87%E7%8B%AC%E7%AB%8B%E6%80%A7%E8%BD%AF%E4%BB%B6/" class="category-chain-item">设备独立性软件</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/05/17/I-O%E6%A0%B8%E5%BF%83%E5%AD%90%E7%B3%BB%E7%BB%9F/" target="_self">
-          I/O核心子系统
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/17/I-O%E6%A0%B8%E5%BF%83%E5%AD%90%E7%B3%BB%E7%BB%9F/" target="_self">
-        <div>
-          I&#x2F;O核心子系统 这些功能要在哪个层次实现 I&#x2F;O调度 设备保护 总结
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-05-17 18:14" pubdate>
-              2023-05-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%94%E7%AB%A0/" class="category-chain-item">第五章</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%94%E7%AB%A0/%E8%AE%BE%E5%A4%87%E7%8B%AC%E7%AB%8B%E6%80%A7%E8%BD%AF%E4%BB%B6/" class="category-chain-item">设备独立性软件</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/05/17/%E4%B9%A0%E9%A2%98%E6%80%BB%E7%BB%935-1/" target="_self">
-          习题总结5-1
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/17/%E4%B9%A0%E9%A2%98%E6%80%BB%E7%BB%935-1/" target="_self">
-        <div>
-          习题总结 可寻址是块设备的基本特征。 共享设备是指一段时间内允许多个进程同时访问的设备。 分配共享设备是不会发生死锁的 虚拟设备是指采用虚拟技术将一台独占设备转换为若干逻辑设备。引入虚拟设备是为了克服独占设备速度慢、利用率低的特点。 磁盘设备的I&#x2F;O控制主要采取DMA方式。因为DMA方式主要用于块设备，磁盘是典型的块设备。 为了便于上层软件的编制，设备控制器通常需要提供控制寄存器、状态寄
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-05-17 17:54" pubdate>
-              2023-05-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%94%E7%AB%A0/" class="category-chain-item">第五章</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%94%E7%AB%A0/I-O%E7%AE%A1%E7%90%86%E6%A6%82%E8%BF%B0/" class="category-chain-item">I/O管理概述</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2023/05/17/%E8%BE%93%E5%85%A5-%E8%BE%93%E5%87%BA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%8E%A5%E5%8F%A3/" target="_self">
-          输入/输出应用程序接口
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/17/%E8%BE%93%E5%85%A5-%E8%BE%93%E5%87%BA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%8E%A5%E5%8F%A3/" target="_self">
-        <div>
-          输入&#x2F;输出应用程序接口 输入&#x2F;输出应用程序接口 阻塞&#x2F;非阻塞I&#x2F;O 设备驱动程序接口 统一标准的设备驱动程序接口
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-05-17 16:36" pubdate>
-              2023-05-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%94%E7%AB%A0/" class="category-chain-item">第五章</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%94%E7%AB%A0/I-O%E7%AE%A1%E7%90%86%E6%A6%82%E8%BF%B0/" class="category-chain-item">I/O管理概述</a>
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E4%B8%83%E7%AB%A0/B%E6%A0%91%E5%92%8CB-%E6%A0%91/" class="category-chain-item">B树和B+树</a>
   
   
 
@@ -902,7 +874,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/#board">10</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/#board">11</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

@@ -224,15 +224,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/05/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B/" target="_self">
-          操作系统发展历程
+        <a href="/2023/05/14/%E4%B8%A4%E7%BA%A7%E9%A1%B5%E8%A1%A8/" target="_self">
+          两级页表
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/14/%E4%B8%A4%E7%BA%A7%E9%A1%B5%E8%A1%A8/" target="_self">
         <div>
-          操作系统发展历程手工操作阶段（此阶段无操作系统） 用户在计算机上算题的所有工作都要人工干预，如程序的装入、运行、结果的输出等。随着计算机硬件的发展，人机矛盾（速度和资源利用）越来越大，必须寻求新的解决办法。 手工操作阶段有两个突出的缺点：①用户独占全机，虽然不会出现因资源已被其他用户占用而等待的现象，但资源利用率低。②CPU等待手工操作，CPU的利用不充分。  批处理阶段（操作系统开始出现）为了解
+          两级页表单级页表存在的问题  根据程序局部性原理可知，很多时候，进程在一段时间内只需要访问某几个页面就可以正常运行了。因此没有必要让整个页表都常驻内存。  如何解决单级页表的问题 把页表再分页并离散存储，然后再建立一张页表记录页表各个部分的存放位置，称为页目录表，或称外层页表，或称顶层页表  两级页表的原理、地址结构 如何实现地址变换 需要注意的几个细节 总结
         </div>
       </a>
 
@@ -240,8 +240,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-05-11 20:00" pubdate>
-              2023-05-11
+            <time datetime="2023-05-14 20:06" pubdate>
+              2023-05-14
             </time>
           </div>
         
@@ -261,8 +261,15 @@
   
     <span>></span>
     
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%80%E7%AB%A0/" class="category-chain-item">第一章</a>
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0/" class="category-chain-item">第三章</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%A6%82%E5%BF%B5/" class="category-chain-item">内存管理概念</a>
+  
+  
+
   
 
   
@@ -285,15 +292,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/05/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" target="_self">
-          操作系统的基本概念
+        <a href="/2023/05/14/%E5%85%B7%E6%9C%89%E5%BF%AB%E8%A1%A8%E7%9A%84%E5%9C%B0%E5%9D%80%E5%8F%98%E6%8D%A2%E6%9C%BA%E6%9E%84/" target="_self">
+          具有快表的地址变换机构
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/14/%E5%85%B7%E6%9C%89%E5%BF%AB%E8%A1%A8%E7%9A%84%E5%9C%B0%E5%9D%80%E5%8F%98%E6%8D%A2%E6%9C%BA%E6%9E%84/" target="_self">
         <div>
-          操作系统的基本概念操作系统的概念 操作系统(Operating System, OS)是指控制和管理整个计算机系统的硬件与软件资源，合理地组织、调度计算机的工作与资源的分配，进而为用户和其他软件提供方便接口与环境的程序集合。操作系统是计算机系统中最基本的系统软件。  操作系统的特征   操作系统是一种系统软件，但与其他系统软件和应用软件有很大的不同，它有自己的特殊性即基本特征。操作系统的基本特征包
+          具有快表的地址变换机构什么是快表快表，又称联想寄存器（TLB， translation lookaside buffer ），是一种访问速度比内存快很多的高速缓存（TLB不是内存！），用来存放最近访问的页表项的副本，可以加速地址变换的速度。与此对应，内存中的页表常称为慢表。 引入快表过后的地址变换过程 程序局部性原理 总结
         </div>
       </a>
 
@@ -301,8 +308,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-05-11 19:17" pubdate>
-              2023-05-11
+            <time datetime="2023-05-14 20:02" pubdate>
+              2023-05-14
             </time>
           </div>
         
@@ -322,8 +329,15 @@
   
     <span>></span>
     
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%80%E7%AB%A0/" class="category-chain-item">第一章</a>
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0/" class="category-chain-item">第三章</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%A6%82%E5%BF%B5/" class="category-chain-item">内存管理概念</a>
+  
+  
+
   
 
   
@@ -346,15 +360,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/05/11/%E5%A4%96%E9%83%A8%E6%8E%92%E5%BA%8F/" target="_self">
-          外部排序
+        <a href="/2023/05/14/%E5%9F%BA%E6%9C%AC%E5%9C%B0%E5%9D%80%E5%8F%98%E6%8D%A2%E6%9C%BA%E6%9E%84/" target="_self">
+          基本地址变换机构
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/11/%E5%A4%96%E9%83%A8%E6%8E%92%E5%BA%8F/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/14/%E5%9F%BA%E6%9C%AC%E5%9C%B0%E5%9D%80%E5%8F%98%E6%8D%A2%E6%9C%BA%E6%9E%84/" target="_self">
         <div>
-          外部排序算法思想 外部排序：数据元素太多，无法一次全部读入内存进行排序 使用归并排序的方法，最少只需在内存中分配3块大小的 缓冲区即可对任意一个大文件进行排序 若要进行k路归并排序，则需要在内存中分配k个输入缓冲区和1个输出缓冲区 步骤 生成r个初始归并段(对L个记录进行内部排序，组成一个有序的初始归并段) 进行S趟k路归并，S &#x3D; [ logkr ] (向上取整)   如何进行k路归并
+          基本地址变换机构基本地址变换机构原理 对页表项进一步探讨 总结
         </div>
       </a>
 
@@ -362,8 +376,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-05-11 15:52" pubdate>
-              2023-05-11
+            <time datetime="2023-05-14 19:28" pubdate>
+              2023-05-14
             </time>
           </div>
         
@@ -378,13 +392,20 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">数据结构</a>
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AB%E7%AB%A0-%E6%8E%92%E5%BA%8F/" class="category-chain-item">第八章 排序</a>
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0/" class="category-chain-item">第三章</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%A6%82%E5%BF%B5/" class="category-chain-item">内存管理概念</a>
+  
+  
+
   
 
   
@@ -407,15 +428,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/05/11/%E5%90%84%E7%A7%8D%E5%86%85%E9%83%A8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%9A%84%E6%AF%94%E8%BE%83%E5%8F%8A%E5%BA%94%E7%94%A8/" target="_self">
-          各种内部排序算法的比较及应用
+        <a href="/2023/05/14/%E5%9F%BA%E6%9C%AC%E5%88%86%E9%A1%B5%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" target="_self">
+          基本分页存储管理的基本概念
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/11/%E5%90%84%E7%A7%8D%E5%86%85%E9%83%A8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%9A%84%E6%AF%94%E8%BE%83%E5%8F%8A%E5%BA%94%E7%94%A8/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/14/%E5%9F%BA%E6%9C%AC%E5%88%86%E9%A1%B5%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" target="_self">
         <div>
-          各种内部排序算法的比较及应用内部排序算法的比较 从时间复杂度看:简单选择排序、直接插入排序和冒泡排序平均情况下的时间复杂度都为O(n)，且实现过程也较为简单，但直接插入排序和冒泡排序最好情况下的时间复杂度可以达到O(n)，而简单选择排序则与序列的初始状态无关。希尔排序作为插入排序的拓展，对较大规模的数据都可以达到很高的效率，但目前未得出其精确的渐近时间。堆排序利用了一种称为堆的数据结构，可以在线性
+          基本分页存储管理的基本概念什么是“地址空间” 什么是分页存储 重要的数据结构–页表 每个页表占多少个字节 如何实现地址的转换 如何确定一个逻辑地址对应的页号、页内偏移量 为何页面大小要取2的整数次幂 逻辑地址结构 总结
         </div>
       </a>
 
@@ -423,8 +444,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-05-11 13:32" pubdate>
-              2023-05-11
+            <time datetime="2023-05-14 19:06" pubdate>
+              2023-05-14
             </time>
           </div>
         
@@ -439,13 +460,20 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">数据结构</a>
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AB%E7%AB%A0-%E6%8E%92%E5%BA%8F/" class="category-chain-item">第八章 排序</a>
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0/" class="category-chain-item">第三章</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%A6%82%E5%BF%B5/" class="category-chain-item">内存管理概念</a>
+  
+  
+
   
 
   
@@ -468,15 +496,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/05/10/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E5%92%8C%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/" target="_self">
-          归并排序和基数排序
+        <a href="/2023/05/14/%E5%8A%A8%E6%80%81%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95/" target="_self">
+          动态分区分配算法
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/10/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E5%92%8C%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/14/%E5%8A%A8%E6%80%81%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95/" target="_self">
         <div>
-          归并排序和基数排序归并排序算法思想 “归并”的含义是将两个或两个以上的有序表合并成一个新的有序表。 假定待排序表含有n个记录，则可将其视为n个有序的子表，每个子表的长度为1，然后两两归并，得到[n&#x2F;2] (向上取整)个长度为2或1的有序表；继续两两归并…….如此重复，直到合并成一个长度为n的有序表为止。 Merge()的功能是将前后相邻的两个有序表归并为一个有序表。设两段有序表A[low
+          动态分区分配算法首次适应算法 算法思想：每次都从低地址开始查找，找到第一个能满足大小的空闲分区。 如何实现：空闲分区以地址递增的次序排列。每次分配内存时顺序查找空闲分区链（或空闲分区表），找到大小能满足要求的第一个空闲分区  最佳适应算法 算法思想：由于动态分区分配是一种连续分配方式，为各进程分配的空间必须是连续的一整片区域。因此为了保证当“大进程”到来时能有连续的大片空间，可以尽可能多地留下大片
         </div>
       </a>
 
@@ -484,8 +512,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-05-10 23:12" pubdate>
-              2023-05-10
+            <time datetime="2023-05-14 18:00" pubdate>
+              2023-05-14
             </time>
           </div>
         
@@ -500,13 +528,20 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">数据结构</a>
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AB%E7%AB%A0-%E6%8E%92%E5%BA%8F/" class="category-chain-item">第八章 排序</a>
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0/" class="category-chain-item">第三章</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%A6%82%E5%BF%B5/" class="category-chain-item">内存管理概念</a>
+  
+  
+
   
 
   
@@ -529,15 +564,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/05/10/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/" target="_self">
-          选择排序
+        <a href="/2023/05/14/%E8%BF%9E%E7%BB%AD%E5%88%86%E9%85%8D%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F/" target="_self">
+          连续分配管理方式
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/10/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/14/%E8%BF%9E%E7%BB%AD%E5%88%86%E9%85%8D%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F/" target="_self">
         <div>
-          选择排序简单选择排序算法思想假设排序表为L[1…n],第i趟排序即L[i…n]中选择关键字最小的元素与L(i)交换，每一趟排序可以确定一个元素的最终位置，这样经过n - 1 趟排序就可使得整个排序表有序。 模板代码12345678void SelectSort(ElemType A[],int n)&#123;    for(int i = 0;i &lt; n - 1;i ++)&#123;
+          连续分配管理方式单一连续分配方式 固定分区分配 动态分区算法 动态分区分配又称为可变分区分配。这种分配方式不会预先划分内存分区，而是在进程装入内存时，根据进程的大小动态地建立分区，并使分区的大小正好适合进程的需要。因此系统分区的大小和数目是可变的。（eg：假设某计算机内存大小为 64MB，系统区 8MB，用户区共 56 MB…） 需要考虑的问题： 系统要用什么样的数据结构记录内存的使用情况？ 当很
         </div>
       </a>
 
@@ -545,8 +580,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-05-10 20:36" pubdate>
-              2023-05-10
+            <time datetime="2023-05-14 16:45" pubdate>
+              2023-05-14
             </time>
           </div>
         
@@ -561,13 +596,20 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">数据结构</a>
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AB%E7%AB%A0-%E6%8E%92%E5%BA%8F/" class="category-chain-item">第八章 排序</a>
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0/" class="category-chain-item">第三章</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%A6%82%E5%BF%B5/" class="category-chain-item">内存管理概念</a>
+  
+  
+
   
 
   
@@ -590,15 +632,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/05/10/%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F/" target="_self">
-          交换排序
+        <a href="/2023/05/14/%E8%A6%86%E7%9B%96%E4%B8%8E%E4%BA%A4%E6%8D%A2/" target="_self">
+          覆盖与交换
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/10/%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/14/%E8%A6%86%E7%9B%96%E4%B8%8E%E4%BA%A4%E6%8D%A2/" target="_self">
         <div>
-          交换排序冒泡排序算法思想从后往前(或从前往后)两两比较相邻元素的值，若为逆序(即A[i - 1] &gt; A[i]),则交换他们，直到序列比较完。我们称它为第一趟冒泡，结果是将最小的元素交换到待排序的第一个位置(或将最大的元素交换到待排序序列的最后一个位置)，关键字最小的元素如气泡一般逐渐往上“漂浮”直至“水面”(或关键字最大的元素如石头一般下沉至水底)。下一趟冒泡时，前一趟确定的最小元素不在参
+          覆盖与交换覆盖技术 覆盖的思想：由于程序运行时并非任何时候都要访问程序及数据的各个部分（尤其是大程序），因此可把用户空间分成一个固定区和若干覆盖区。将经常活跃的部分放在固定区，其余部分按调用关系分段。首先将那些即将要访问的段放入覆盖区，其他段放在外存中，在需要调用前，系统再将其调入覆盖区，替换覆盖区中原有的段。 覆盖的特点:打破了必须将一个进程的全部信息装入主存后才能运行的限制，但当同时运行程序的
         </div>
       </a>
 
@@ -606,8 +648,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-05-10 19:04" pubdate>
-              2023-05-10
+            <time datetime="2023-05-14 16:31" pubdate>
+              2023-05-14
             </time>
           </div>
         
@@ -622,13 +664,20 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">数据结构</a>
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AB%E7%AB%A0-%E6%8E%92%E5%BA%8F/" class="category-chain-item">第八章 排序</a>
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0/" class="category-chain-item">第三章</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%A6%82%E5%BF%B5/" class="category-chain-item">内存管理概念</a>
+  
+  
+
   
 
   
@@ -651,15 +700,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/05/10/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/" target="_self">
-          插入排序
+        <a href="/2023/05/14/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E7%9A%84%E6%A6%82%E5%BF%B5/" target="_self">
+          内存管理的概念
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/10/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/14/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E7%9A%84%E6%A6%82%E5%BF%B5/" target="_self">
         <div>
-          插入排序直接插入排序算法思想 基本思想是每次将一个待排序的记录按其关键字大小插入前面已排好序的子序列，直到全部记录插入。 要将元素L[i]插入已有序的子序列L[1…i-1]，需要执行以下操作（L[]表示一个表，L()表示一个元素。①查找出L(i)在L[1…i-1]中的插入位置k②将L[k…i-1]中的所有元素依次后移一个位置。③将L(i)复制到L(k)。  模板代码1234567891011voi
+          内存管理的概念内存空间的分配和回收 由操作系统完成主存储器空间的分配和管理，使程序员摆脱存储分配的麻烦，提高编程效率。  内存空间的扩展 利用虚拟存储技术或自动覆盖技术，从逻辑上扩充内存。  地址转换 为了使编程更方便，程序员写程序时应该只需要关注指令、数据的逻辑地址。而逻辑地址到物理地址的转换（这个过程称为地址重定位）应该由操作系统负责，这样就保证了程序员写程序时不需要关注物理内存的实际情况。
         </div>
       </a>
 
@@ -667,8 +716,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-05-10 16:46" pubdate>
-              2023-05-10
+            <time datetime="2023-05-14 16:12" pubdate>
+              2023-05-14
             </time>
           </div>
         
@@ -683,13 +732,20 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">数据结构</a>
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AC%AC%E5%85%AB%E7%AB%A0-%E6%8E%92%E5%BA%8F/" class="category-chain-item">第八章 排序</a>
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0/" class="category-chain-item">第三章</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%A6%82%E5%BF%B5/" class="category-chain-item">内存管理概念</a>
+  
+  
+
   
 
   
@@ -712,15 +768,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/05/06/%E5%B9%B6%E6%9F%A5%E9%9B%86/" target="_self">
-          并查集
+        <a href="/2023/05/14/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%A6%82%E5%BF%B5/" target="_self">
+          内存的基础知识
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/06/%E5%B9%B6%E6%9F%A5%E9%9B%86/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/14/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%A6%82%E5%BF%B5/" target="_self">
         <div>
-          并查集算法思想
+          内存的基础知识什么是内存？有何作用？ 内存可存放数据。程序执行前需要先存放到内存中才能被CPU处理–缓和CPU与硬盘之间的速度矛盾。  几个常用的数量单位 指令的工作原理 装入的三种方式–绝对装入 在编译时，如果知道程序将放到内存中的哪个位置，编译程序将产生绝对地址的目标代码。装入程序按照装入模块中的地址，将程序和数据装入内存。 绝对装入只适用于单道程序环境。  装入的三种方式–可重定位装入 静态
         </div>
       </a>
 
@@ -728,8 +784,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-05-06 20:17" pubdate>
-              2023-05-06
+            <time datetime="2023-05-14 11:27" pubdate>
+              2023-05-14
             </time>
           </div>
         
@@ -744,13 +800,20 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/" class="category-chain-item">算法基础</a>
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%BA%8C%E7%AB%A0/" class="category-chain-item">第二章</a>
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0/" class="category-chain-item">第三章</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%A6%82%E5%BF%B5/" class="category-chain-item">内存管理概念</a>
+  
+  
+
   
 
   
@@ -773,15 +836,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/05/06/Trie/" target="_self">
-          Trie
+        <a href="/2023/05/13/%E6%AD%BB%E9%94%81/" target="_self">
+          死锁
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/06/Trie/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/13/%E6%AD%BB%E9%94%81/" target="_self">
         <div>
-          Trie数Tire树介绍 Tire 树 又称单词查找树，是一种树形结构，是一种哈希树的变种。 Tire 树是一种能够快速存储和查找一组字符串集合的数据结构，是以空间换时间，利用字符串的前缀来降低查询时间。 与二叉树不同，Tire 树有 26 子节点对应 26 个字母，根节点不包含字符串，从根节点到某个节点，经过的字符连起来的字符串就是对应的字符串。当储存结束一个字符串后，尾节点会产生一个标记，表示
+          死锁死锁的概念死锁、饥饿、死循环的区别 死锁产生的必要条件 什么时候会发生死锁 死锁处理的策略 死锁的处理策略–预防死锁破坏互斥条件 并不是所有的资源都可以改造成可共享使用的资源。并且为了系统安全，很多地方还必须保护这种互斥性。因此，很多时候都无法破坏互斥条件。  破坏不剥夺条件 破坏请求和保持条件 可以采用静态分配方法，即进程在运行前一次申请完它所需要的全部资源，在它的资源未满足前，不让它投入运
         </div>
       </a>
 
@@ -789,19 +852,40 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-05-06 19:04" pubdate>
-              2023-05-06
+            <time datetime="2023-05-13 21:58" pubdate>
+              2023-05-13
             </time>
           </div>
         
         
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
         
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80-%E7%AC%AC%E4%BA%8C%E7%AB%A0/">#算法基础,第二章</a>
-            
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E7%AB%A0/" class="category-chain-item">第二章</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
+        
         
       </div>
     </article>
@@ -811,7 +895,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/7/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/#board">9</a><a class="page-number" href="/page/10/#board">10</a><a class="extend next" rel="next" href="/page/9/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/7/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/#board">9</a><a class="page-number" href="/page/10/#board">10</a><a class="page-number" href="/page/11/#board">11</a><a class="extend next" rel="next" href="/page/9/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
